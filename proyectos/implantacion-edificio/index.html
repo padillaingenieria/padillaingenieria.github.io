@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cálculo de volumen de excavación e implantación de edificio | Padilla Ingeniería</title>
+
+  <meta
+    name="description"
+    content="Levantamiento fotogramétrico para cálculo de volumen de excavación e implantación de un edificio mediante BIM. Oruro, Bolivia."
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fa;
+      color: #17202a;
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e1e6eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .logo img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      display: block;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #34495e;
+      margin-left: 25px;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: #123b5d;
+    }
+
+    /* HERO */
+
+    .project-hero {
+      background:
+        linear-gradient(
+          rgba(10, 30, 45, 0.78),
+          rgba(10, 30, 45, 0.78)
+        ),
+        url("../../images/IMPLANTACION.png");
+
+      background-size: cover;
+      background-position: center;
+
+      color: white;
+      min-height: 55vh;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .project-hero-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      padding: 80px 30px;
+    }
+
+    .project-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+      opacity: 0.85;
+    }
+
+    .project-hero h1 {
+      max-width: 900px;
+      font-size: clamp(2.3rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      margin-bottom: 25px;
+    }
+
+    .project-location {
+      font-size: 1.05rem;
+      opacity: 0.9;
+    }
+
+    /* CONTENIDO */
+
+    .project-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 30px;
+    }
+
+    .project-intro {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .project-intro h2 {
+      color: #123b5d;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .project-intro p {
+      color: #5f6f7c;
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+    }
+
+    /* FICHA TÉCNICA */
+
+    .technical-data {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .technical-data h3 {
+      color: #123b5d;
+      margin-bottom: 20px;
+    }
+
+    .technical-item {
+      border-bottom: 1px solid #e1e6eb;
+      padding: 12px 0;
+    }
+
+    .technical-item:last-child {
+      border-bottom: none;
+    }
+
+    .technical-item strong {
+      display: block;
+      color: #34495e;
+      font-size: 0.85rem;
+      margin-bottom: 3px;
+    }
+
+    .technical-item span {
+      color: #667788;
+    }
+
+    /* IMAGEN PRINCIPAL */
+
+    .product-section {
+      background: #eaf0f4;
+      padding: 80px 0;
+    }
+
+    .product-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 30px;
+    }
+
+    .product-inner h2 {
+      color: #123b5d;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .product-inner > p {
+      color: #667788;
+      margin-bottom: 35px;
+    }
+
+    .main-image {
+      background: white;
+      padding: 12px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .main-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    /* FLUJO */
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .workflow-step {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      border: 1px solid #e1e6eb;
+    }
+
+    .workflow-number {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #56758d;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .workflow-step h3 {
+      color: #123b5d;
+      margin-bottom: 8px;
+    }
+
+    .workflow-step p {
+      color: #667788;
+      font-size: 0.92rem;
+    }
+
+    /* REGRESAR */
+
+    .back-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 30px 90px;
+    }
+
+    .back-link {
+      color: #123b5d;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #0c2638;
+      color: #b9c6cf;
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+    }
+
+    /* CELULAR */
+
+    @media (max-width: 700px) {
+
+      .nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 0.85rem;
+      }
+
+      .project-hero {
+        min-height: 60vh;
+      }
+
+      .project-hero-inner {
+        padding: 65px 20px;
+      }
+
+      .project-section {
+        padding: 60px 20px;
+      }
+
+      .project-intro {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .product-inner {
+        padding: 0 20px;
+      }
+
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+
+      .back-section {
+        padding: 50px 20px 70px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+
+    <div class="nav">
+
+      <a class="logo" href="../../index.html">
+        <img src="../../images/LOGO.webp" alt="Padilla Ingeniería">
+      </a>
+
+      <nav>
+        <a href="../../index.html#servicios">Servicios</a>
+        <a href="../../index.html#proyectos">Proyectos</a>
+        <a href="../../index.html#vision">Enfoque</a>
+        <a href="../../index.html#contacto">Contacto</a>
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="project-hero">
+
+      <div class="project-hero-inner">
+
+        <div class="project-label">
+          FOTOGRAMETRÍA · BIM
+        </div>
+
+        <h1>
+          Cálculo de volumen de excavación e implantación de edificio
+        </h1>
+
+        <div class="project-location">
+          Oruro · Bolivia
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- INTRODUCCIÓN -->
+
+    <section class="project-section">
+
+      <div class="project-intro">
+
+        <div>
+
+          <h2>
+            Del terreno existente al modelo BIM
+          </h2>
+
+          <p>
+            Se realizó el levantamiento fotogramétrico del terreno
+            como base para determinar el volumen de excavación
+            necesario para la ejecución del proyecto.
+          </p>
+
+          <p>
+            A partir de la información obtenida del levantamiento
+            se generaron productos digitales del terreno, incluyendo
+            el modelo digital de elevación y curvas de nivel.
+          </p>
+
+          <p>
+            Posteriormente, la información del terreno fue utilizada
+            como referencia para apoyar la implantación del modelo
+            BIM del edificio mediante Revit.
+          </p>
+
+        </div>
+
+
+        <div class="technical-data">
+
+          <h3>
+            Ficha técnica
+          </h3>
+
+          <div class="technical-item">
+            <strong>Ubicación</strong>
+            <span>Oruro, Bolivia</span>
+          </div>
+
+          <div class="technical-item">
+            <strong>Tecnología</strong>
+            <span>Drone · Aerofotogrametría · BIM</span>
+          </div>
+
+          <div class="technical-item">
+            <strong>Software BIM</strong>
+            <span>Autodesk Revit</span>
+          </div>
+
+          <div class="technical-item">
+            <strong>Productos</strong>
+            <span>MDE · Curvas de nivel</span>
+          </div>
+
+          <div class="technical-item">
+            <strong>Aplicación</strong>
+            <span>Cálculo de excavación e implantación</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- IMAGEN -->
+
+    <section class="product-section">
+
+      <div class="product-inner">
+
+        <h2>
+          Implantación del proyecto
+        </h2>
+
+        <p>
+          Integración de la información del terreno con el modelo
+          BIM del edificio para visualizar su implantación sobre
+          las condiciones existentes.
+        </p>
+
+        <div class="main-image">
+
+          <img
+            src="../../images/IMPLANTACION.png"
+            alt="Implantación de modelo BIM sobre terreno levantado mediante fotogrametría"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- METODOLOGÍA -->
+
+    <section class="project-section">
+
+      <h2 class="project-intro h2">
+        Flujo de trabajo
+      </h2>
+
+      <div class="workflow">
+
+        <div class="workflow-step">
+
+          <div class="workflow-number">
+            01
+          </div>
+
+          <h3>
+            Levantamiento
+          </h3>
+
+          <p>
+            Captura aérea del terreno mediante drone para obtener
+            información espacial de las condiciones existentes.
+          </p>
+
+        </div>
+
+
+        <div class="workflow-step">
+
+          <div class="workflow-number">
+            02
+          </div>
+
+          <h3>
+            Procesamiento
+          </h3>
+
+          <p>
+            Procesamiento fotogramétrico para generar el modelo
+            digital de elevación y productos derivados.
+          </p>
+
+        </div>
+
+
+        <div class="workflow-step">
+
+          <div class="workflow-number">
+            03
+          </div>
+
+          <h3>
+            Análisis
+          </h3>
+
+          <p>
+            Utilización de la información del terreno como base
+            para determinar las condiciones necesarias para la
+            excavación.
+          </p>
+
+        </div>
+
+
+        <div class="workflow-step">
+
+          <div class="workflow-number">
+            04
+          </div>
+
+          <h3>
+            Implantación BIM
+          </h3>
+
+          <p>
+            Integración del terreno con el modelo BIM del edificio
+            para visualizar su implantación.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- REGRESAR -->
+
+    <div class="back-section">
+
+      <a
+        class="back-link"
+        href="../../index.html#proyectos"
+      >
+        ← Volver al portafolio
+      </a>
+
+    </div>
+
+  </main>
+
+
+  <footer>
+
+    © 2026 Padilla Ingeniería · Oruro, Bolivia
+
+  </footer>
+
+</body>
+
+</html>
