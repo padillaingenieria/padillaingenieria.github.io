@@ -66,17 +66,24 @@
       color: #123b5d;
     }
 
-    .hero {
-      min-height: 78vh;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(
-          rgba(10, 30, 45, 0.88),
-          rgba(10, 30, 45, 0.88)
-        );
-      color: white;
-    }
+  .hero {
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: white;
+
+  background-image:
+    linear-gradient(
+      rgba(10, 30, 45, 0.72),
+      rgba(10, 30, 45, 0.72)
+    ),
+    url("images/hero.webp");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
     .hero-content {
       max-width: 1200px;
@@ -276,20 +283,21 @@
       <div class="hero-content">
 
         <h1>
-          Ingeniería basada en datos del terreno.
-        </h1>
+  Ingeniería para minería y construcción,
+  impulsada por tecnología geoespacial.
+</h1>
 
-        <p>
-          Aerofotogrametría, documentación técnica y herramientas
-          digitales para transformar información del terreno y de las
-          obras en información útil para la toma de decisiones.
-        </p>
+<p>
+  Integramos ingeniería, aerofotogrametría y herramientas
+  digitales para obtener información del terreno, documentar
+  proyectos y apoyar la toma de decisiones.
+</p>
 
         <div class="buttons">
 
           <a class="button button-primary" href="#proyectos">
-            Ver proyectos
-          </a>
+  Explorar proyectos
+</a>
 
           <a class="button button-secondary" href="#contacto">
             Contactar
