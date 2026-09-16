@@ -66,8 +66,9 @@
       color: #123b5d;
     }
 
-    .project-hero {
-  width: 100%;
+  .project-hero {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   min-height: 65vh;
   display: flex;
   align-items: flex-end;
@@ -82,7 +83,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  }
+}
 
     .project-hero-inner {
       width: 100%;
@@ -218,9 +219,12 @@
       font-size: 0.92rem;
     }
 
-    .back {
-      text-align: center;
-    }
+   .back {
+  max-width: 1200px;
+  margin: auto;
+  padding: 90px 30px;
+  text-align: left;
+}
 
     .back a {
       text-decoration: none;
