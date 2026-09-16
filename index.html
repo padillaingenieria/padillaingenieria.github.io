@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Padilla Ingeniería | Ingeniería, Aerofotogrametría y Datos del Terreno</title>
+
+  <meta name="description" content="Padilla Ingeniería. Servicios de ingeniería, aerofotogrametría, documentación de obras, modelos 3D y análisis de información del terreno.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fa;
+      color: #17202a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e1e6eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #123b5d;
+    }
+
+    .logo span {
+      font-weight: 400;
+      color: #5d6d7e;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #34495e;
+      margin-left: 25px;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      color: #123b5d;
+    }
+
+    .hero {
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(
+          rgba(10, 30, 45, 0.88),
+          rgba(10, 30, 45, 0.88)
+        );
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+      padding: 80px 30px;
+    }
+
+    .hero h1 {
+      max-width: 850px;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      max-width: 720px;
+      font-size: 1.2rem;
+      color: #d9e2e8;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .button-primary {
+      background: #ffffff;
+      color: #123b5d;
+    }
+
+    .button-secondary {
+      border: 1px solid #ffffff;
+      color: #ffffff;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 30px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      color: #123b5d;
+      margin-bottom: 15px;
+    }
+
+    .section-intro {
+      max-width: 700px;
+      color: #667788;
+      margin-bottom: 45px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 30px;
+      border: 1px solid #e2e7eb;
+      border-radius: 8px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+    }
+
+    .card h3 {
+      color: #123b5d;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #667788;
+      font-size: 0.95rem;
+    }
+
+    .projects {
+      background: #eaf0f4;
+      max-width: none;
+    }
+
+    .projects-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 30px;
+    }
+
+    .project-placeholder {
+      background: #ffffff;
+      border: 1px dashed #aebbc5;
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #73818c;
+      border-radius: 8px;
+    }
+
+    .vision {
+      background: #123b5d;
+      color: white;
+      max-width: none;
+    }
+
+    .vision-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 30px;
+    }
+
+    .vision h2 {
+      font-size: 2.3rem;
+      margin-bottom: 20px;
+    }
+
+    .vision p {
+      max-width: 750px;
+      color: #dce7ee;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      background: #0c2436;
+      color: #b9c7d0;
+      text-align: center;
+      padding: 35px 20px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 0.85rem;
+      }
+
+      .hero {
+        min-height: 70vh;
+      }
+
+      section,
+      .projects-inner,
+      .vision-inner {
+        padding: 65px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav">
+
+      <div class="logo">
+        PADILLA <span>INGENIERÍA</span>
+      </div>
+
+      <nav>
+        <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#vision">Enfoque</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <h1>
+          Ingeniería basada en datos del terreno.
+        </h1>
+
+        <p>
+          Aerofotogrametría, documentación técnica y herramientas
+          digitales para transformar información del terreno y de las
+          obras en información útil para la toma de decisiones.
+        </p>
+
+        <div class="buttons">
+
+          <a class="button button-primary" href="#proyectos">
+            Ver proyectos
+          </a>
+
+          <a class="button button-secondary" href="#contacto">
+            Contactar
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section id="servicios">
+
+      <h2 class="section-title">
+        Servicios
+      </h2>
+
+      <p class="section-intro">
+        Soluciones técnicas apoyadas en herramientas de ingeniería,
+        captura de datos y tecnologías digitales.
+      </p>
+
+
+      <div class="services">
+
+        <div class="card">
+          <h3>Aerofotogrametría</h3>
+          <p>
+            Captura y procesamiento de información aérea para generar
+            ortofotos, modelos digitales y productos cartográficos.
+          </p>
+        </div>
+
+
+        <div class="card">
+          <h3>Documentación de obras</h3>
+          <p>
+            Registro aéreo y visual del avance de proyectos para
+            facilitar el seguimiento y la documentación técnica.
+          </p>
+        </div>
+
+
+        <div class="card">
+          <h3>Modelos 3D</h3>
+          <p>
+            Representación tridimensional del terreno y de elementos
+            construidos para facilitar la visualización y análisis.
+          </p>
+        </div>
+
+
+        <div class="card">
+          <h3>Información para minería</h3>
+          <p>
+            Captura y organización de información espacial como apoyo
+            a trabajos de exploración, evaluación y planificación.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div class="projects" id="proyectos">
+
+      <div class="projects-inner">
+
+        <h2 class="section-title">
+          Proyectos
+        </h2>
+
+        <p class="section-intro">
+          Próximamente podrás explorar proyectos reales mediante
+          fotografías, productos fotogramétricos y modelos 3D
+          interactivos.
+        </p>
+
+
+        <div class="project-placeholder">
+
+          <div>
+            <strong>Portafolio técnico</strong>
+            <br>
+            Aquí incorporaremos tus proyectos reales.
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="vision" id="vision">
+
+      <div class="vision-inner">
+
+        <h2>
+          Del terreno a la información.
+        </h2>
+
+        <p>
+          Padilla Ingeniería integra conocimientos de ingeniería con
+          herramientas digitales para capturar, procesar y presentar
+          información espacial de manera clara y útil.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <section id="contacto">
+
+      <h2 class="section-title">
+        Contacto
+      </h2>
+
+      <p class="section-intro">
+        ¿Tienes un proyecto que requiere información del terreno,
+        documentación aérea o representación digital?
+      </p>
+
+      <div class="card">
+
+        <h3>Padilla Ingeniería</h3>
+
+        <p>
+          Oruro, Bolivia
+        </p>
+
+        <br>
+
+        <p>
+          Próximamente incorporaremos aquí tus canales de contacto
+          profesionales.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    © 2026 Padilla Ingeniería · Oruro, Bolivia
+
+  </footer>
+
+</body>
+</html>
