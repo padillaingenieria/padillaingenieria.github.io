@@ -160,7 +160,83 @@
       color: #667788;
       margin-bottom: 45px;
     }
+.contact-grid {
+  margin-top:45px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
 
+.contact-info,
+.contact-action {
+  background:#ffffff;
+  border:1px solid #e1e6eb;
+  border-radius:10px;
+  padding:40px;
+}
+
+.contact-info h3,
+.contact-action h3 {
+  color:#123b5d;
+  font-size:1.35rem;
+  margin-bottom:15px;
+}
+
+.contact-info p,
+.contact-action p {
+  color:#667788;
+  line-height:1.65;
+}
+
+.contact-details {
+  margin-top:30px;
+  padding-top:20px;
+  border-top:1px solid #e1e6eb;
+}
+
+.contact-details p {
+  margin-bottom:18px;
+}
+
+.contact-details strong {
+  color:#34495e;
+}
+
+.contact-buttons {
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.contact-button {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:12px 18px;
+  border:1px solid #123b5d;
+  border-radius:6px;
+  color:#123b5d;
+  text-decoration:none;
+  font-weight:700;
+  font-size:0.9rem;
+  transition:0.2s ease;
+}
+
+.contact-button:hover {
+  background:#123b5d;
+  color:#ffffff;
+}
+
+.contact-button.primary {
+  background:#123b5d;
+  color:#ffffff;
+}
+
+.contact-button.primary:hover {
+  background:#0d2e48;
+}
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -395,6 +471,18 @@
       .vision-grid {
   grid-template-columns: 1fr;
 }
+        .contact-grid {
+    grid-template-columns:1fr;
+  }
+
+  .contact-info,
+  .contact-action {
+    padding:30px;
+  }
+
+  .contact-buttons {
+    grid-template-columns:1fr;
+  }
     }
   </style>
 </head>
