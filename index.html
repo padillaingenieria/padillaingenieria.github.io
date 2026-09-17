@@ -328,6 +328,31 @@
       padding: 90px 30px;
     }
 
+    .vision-grid {
+  margin-top: 45px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.vision-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.vision-card h3 {
+  color: #ffffff;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.vision-card p {
+  color: #d5e0e7;
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
     .vision h2 {
       font-size: 2.3rem;
       margin-bottom: 20px;
@@ -367,6 +392,9 @@
       .vision-inner {
         padding: 65px 20px;
       }
+      .vision-grid {
+  grid-template-columns: 1fr;
+}
     }
   </style>
 </head>
@@ -661,23 +689,71 @@
     </div>
 
 
-    <div class="vision" id="vision">
+<div class="vision" id="vision">
 
-      <div class="vision-inner">
+  <div class="vision-inner">
 
-        <h2>
-          Del terreno a la información.
-        </h2>
+    <h2>
+      Del terreno a la información.
+    </h2>
+
+    <p>
+      Integramos ingeniería y tecnología geoespacial para transformar
+      información del terreno en productos digitales útiles para el
+      análisis, la planificación y la toma de decisiones.
+    </p>
+
+
+    <div class="vision-grid">
+
+      <div class="vision-card">
+
+        <h3>
+          Ingeniería
+        </h3>
 
         <p>
-          Padilla Ingeniería integra conocimientos de ingeniería con
-          herramientas digitales para capturar, procesar y presentar
-          información espacial de manera clara y útil.
+          Aplicamos criterio técnico para comprender las necesidades
+          del proyecto y convertir la información obtenida en resultados
+          útiles para la toma de decisiones.
+        </p>
+
+      </div>
+
+
+      <div class="vision-card">
+
+        <h3>
+          Tecnología geoespacial
+        </h3>
+
+        <p>
+          Utilizamos drones, aerofotogrametría y herramientas digitales
+          para capturar, procesar y representar información espacial.
+        </p>
+
+      </div>
+
+
+      <div class="vision-card">
+
+        <h3>
+          Integración
+        </h3>
+
+        <p>
+          Conectamos la información territorial con topografía, minería,
+          geofísica, BIM y otras disciplinas para obtener una visión
+          más completa del proyecto.
         </p>
 
       </div>
 
     </div>
+
+  </div>
+
+</div>
 
 
     <section id="contacto">
