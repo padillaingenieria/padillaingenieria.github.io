@@ -48,7 +48,8 @@
   const onHome = sections.some(id => document.getElementById(id));
   const setActive = id => {
     links.forEach(link => {
-      const active = new URL(link.href).hash === '#' + id;
+      const destination = new URL(link.href);
+      const active = id === 'contacto' ? destination.pathname === '/contacto/' : destination.hash === '#' + id;
       link.classList.toggle('is-active', active);
       if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
