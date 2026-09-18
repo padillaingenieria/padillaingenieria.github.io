@@ -826,10 +826,16 @@
     .brand-stage .hero-brand img { width: 100%; height: auto; display: block; }
     .brand-stage .hero-label {
       display: inline-block;
+      max-width: 100%;
+      padding: 12px 20px;
       color: #194f70;
-      border-color: #c7dce8;
-      background: #ffffff;
+      border-color: #b3d2e2;
+      background: #eef7fb;
       margin: 0;
+      font-size: clamp(1rem, 1.45vw, 1.18rem);
+      font-weight: 700;
+      letter-spacing: .075em;
+      line-height: 1.4;
     }
     .brand-scroll {
       display: block;
@@ -852,7 +858,7 @@
     @media (max-width: 700px) {
       .brand-stage { min-height: 0; padding: 15px 20px 18px; }
       .brand-stage .hero-brand { margin-bottom: 8px; }
-      .brand-stage .hero-label { padding: 6px 9px; font-size: .64rem; letter-spacing: .3px; }
+      .brand-stage .hero-label { padding: 9px 12px; font-size: clamp(.79rem, 3.5vw, .94rem); letter-spacing: .025em; }
       .brand-scroll { display: none; }
       .brand-stage .hero-brand::before { left: 3%; top: 14%; }
       .brand-stage .hero-brand::after { right: 12%; bottom: 14%; }
@@ -1274,9 +1280,9 @@
 </div>
 
     <section id="contacto" class="contact-teaser" aria-labelledby="contacto-titulo">
-      <h2 class="section-title" id="contacto-titulo">Conversemos sobre su proyecto</h2>
+      <h2 class="section-title" id="contacto-titulo">Contáctenos</h2>
       <p class="section-intro">Describa el trabajo que necesita y los datos disponibles. Puede enviar su consulta desde la página de contacto.</p>
-      <a class="contact-teaser-link" href="/contacto/">Ir a contacto →</a>
+      <a class="contact-teaser-link" href="/contacto/">Entrar en contacto →</a>
     </section>
 
   </main>
