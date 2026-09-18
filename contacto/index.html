@@ -48,6 +48,12 @@ main{padding:52px 18px 75px}.contact-layout{grid-template-columns:1fr}.aside-car
       overflow-wrap: normal;
     }
     main h2, main h3 { text-align: center !important; hyphens: none; }
+
+    /* Navegación móvil accesible durante todo el desplazamiento */
+    @media (max-width: 700px) {
+      header { position: sticky; top: 0; z-index: 1000; }
+      [id] { scroll-margin-top: 82px; }
+    }
 </style><script src="/site-nav.js?v=20260918b" defer></script></head><body><header><div class="nav">
 <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menú"><span class="menu-icon" aria-hidden="true"></span></button>
 <a class="logo" href="/" aria-label="Padilla Ingeniería — inicio"><img src="/images/logo-simbolo.webp" alt="" width="64" height="70"></a>
