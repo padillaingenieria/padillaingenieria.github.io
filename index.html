@@ -627,6 +627,114 @@
     @media (prefers-reduced-motion: reduce) {
       .hero-label::before { animation: none; }
     }
+
+    /* Marca completa en portada, símbolo compacto en navegación */
+    .nav { padding: 6px 30px; }
+    .logo, .logo img {
+      width: 64px;
+      height: 70px;
+    }
+    .logo { flex: 0 0 64px; overflow: visible; }
+    .logo img { transform: none; object-fit: contain; }
+    .hero { min-height: 0; }
+    .hero-content { padding: 72px 30px 78px; }
+    .hero h1.hero-brand {
+      width: min(650px, 100%);
+      max-width: none;
+      margin: 0 auto 22px;
+      padding: 14px 24px;
+      border-radius: 9px;
+      background: #ffffff;
+      line-height: 0;
+      box-shadow: 0 12px 36px rgba(0,0,0,.13);
+      position: relative;
+    }
+    .hero-brand img { width: 100%; height: auto; display: block; }
+    .hero-brand::before, .hero-brand::after {
+      content: "";
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #6cc2de;
+      box-shadow: 13px -8px #297ca8, 26px 4px #a3d9e9;
+      animation: pixel-float 5s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-brand::before { left: -36px; top: 28%; }
+    .hero-brand::after { right: -16px; bottom: 20%; animation-delay: -2.5s; }
+    @keyframes pixel-float {
+      0%, 100% { transform: translateY(0); opacity: .6; }
+      50% { transform: translateY(-12px); opacity: 1; }
+    }
+    .hero-headline {
+      max-width: 760px;
+      margin: 18px auto 16px;
+      font-size: clamp(1.5rem, 2.7vw, 2.4rem);
+      line-height: 1.23;
+      font-weight: 700;
+      letter-spacing: -.015em;
+    }
+    .hero-description, .section-intro, .card p, .project-content > p,
+    .vision-card p, .contact-action p {
+      text-align: justify;
+      hyphens: auto;
+    }
+    .hero-description { max-width: 720px; margin: 0 auto 28px; font-size: 1.02rem; }
+    .section-intro { margin-left: auto; margin-right: auto; }
+    .card h3, .project-content h3, .vision-card h3 { text-align: center; }
+    .project-content, .vision-card, .contact-action { text-align: left; }
+    .project-data, .contact-details, .contact-info { text-align: left; }
+    .contact-action h3 { text-align: center; }
+    @media (max-width: 900px) {
+      .nav { padding: 5px 14px; }
+    }
+    @media (max-width: 700px) {
+      header { position: relative; }
+      .nav {
+        display: grid;
+        grid-template-columns: 64px minmax(0, 1fr);
+        align-items: center;
+        gap: 8px;
+        padding: 4px 10px;
+      }
+      .logo, .logo img { width: 60px; height: 68px; }
+      .logo { flex: none; }
+      nav {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0,1fr));
+        gap: 3px;
+        justify-content: stretch;
+      }
+      nav a {
+        grid-column: span 2;
+        display: flex;
+        justify-content: center;
+        min-width: 0;
+        min-height: 31px;
+        margin: 0;
+        padding: 4px 2px;
+        font-size: .69rem;
+        line-height: 1.05;
+        white-space: nowrap;
+      }
+      nav a:nth-last-child(-n+2) { grid-column: span 3; }
+      .hero-content { padding: 38px 20px 56px; }
+      .hero h1.hero-brand { padding: 7px 9px; margin-bottom: 19px; }
+      .hero-brand::before, .hero-brand::after { display: none; }
+      .hero-label { margin-bottom: 12px; }
+      .hero-headline { font-size: clamp(1.35rem, 5.4vw, 1.8rem); margin: 0 auto 15px; }
+      .hero-description { font-size: .97rem; }
+      [id] { scroll-margin-top: 16px; }
+    }
+    @media (max-width: 380px) {
+      .nav { grid-template-columns: 55px minmax(0,1fr); gap: 5px; }
+      .logo, .logo img { width: 53px; height: 60px; }
+      nav a { font-size: .62rem; padding: 3px 1px; min-height: 29px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-brand::before, .hero-brand::after { animation: none; }
+    }
   </style>
 </head>
 
@@ -636,7 +744,7 @@
     <div class="nav">
 
      <a class="logo" href="#">
-  <img src="images/LOGO.webp" alt="Padilla Ingeniería">
+  <img src="images/logo-simbolo.webp" alt="Padilla Ingeniería" width="64" height="70">
 </a>
 
       <nav>
@@ -657,20 +765,19 @@
 
       <div class="hero-content">
 
-  <div class="hero-label">
-    INGENIERÍA CIVIL · MINERÍA · CONSTRUCCIÓN
-  </div>
-
-  <h1>
-    Información técnica precisa para la toma de decisiones
-    en proyectos de ingeniería.
+  <h1 class="hero-brand">
+    <img src="images/logo-completo.webp" alt="Padilla Ingeniería" width="1016" height="520" fetchpriority="high">
   </h1>
 
-<p>
-  Aplicamos ingeniería civil y levantamientos aerofotogramétricos
-  para documentar el terreno, analizar proyectos y generar
-  información técnica útil para minería, construcción y planificación.
-</p>
+  <div class="hero-label">INGENIERÍA CIVIL · MINERÍA · CONSTRUCCIÓN</div>
+
+  <h2 class="hero-headline">Información técnica precisa para la toma de decisiones en proyectos de ingeniería.</h2>
+
+  <p class="hero-description">
+    Aplicamos ingeniería civil y levantamientos aerofotogramétricos para documentar
+    el terreno, analizar proyectos y generar información técnica útil para minería,
+    construcción y planificación.
+  </p>
 
         <div class="buttons">
 
