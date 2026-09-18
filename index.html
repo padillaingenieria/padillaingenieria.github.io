@@ -736,6 +736,8 @@
       .hero-brand::before, .hero-brand::after { animation: none; }
     }
 
+    /* Los textos breves de tarjetas conservan espacios regulares. */
+    .card p, .contact-action p { text-align: left; }
     /* Portafolio resumido: detalles en cada ficha */
     .project-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
     .project-card {
