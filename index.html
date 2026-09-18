@@ -785,6 +785,67 @@
     @media (prefers-reduced-motion: reduce) {
       .section-title::after, .vision h2::after { animation: none; }
     }
+
+    /* La portada presenta la marca antes del mensaje técnico */
+    .brand-stage {
+      min-height: calc(100svh - 83px);
+      display: grid;
+      place-items: center;
+      padding: 44px 30px 50px;
+      background: #ffffff;
+      border-bottom: 1px solid #e5edf2;
+    }
+    .brand-stage-inner { width: min(1080px, 100%); text-align: center; }
+    .brand-stage .hero-brand {
+      display: block;
+      width: min(1040px, 100%);
+      max-width: none;
+      margin: 0 auto 19px;
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      position: relative;
+      line-height: 0;
+    }
+    .brand-stage .hero-brand img { width: 100%; height: auto; display: block; }
+    .brand-stage .hero-label {
+      display: inline-block;
+      color: #194f70;
+      border-color: #c7dce8;
+      background: #ffffff;
+      margin: 0;
+    }
+    .brand-scroll {
+      display: block;
+      width: max-content;
+      margin: 24px auto 0;
+      color: #285a76;
+      font-size: .84rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      text-decoration: none;
+    }
+    .brand-scroll span { display: block; font-size: 1.45rem; line-height: 1.2; }
+    .brand-scroll:hover { color: #123b5d; }
+    .brand-stage .hero-brand::before { left: 5%; top: 32%; }
+    .brand-stage .hero-brand::after { right: 7%; bottom: 27%; }
+    .hero-copy-stage { min-height: 68svh; }
+    .hero-copy-stage .hero-content { padding: 110px 30px; }
+    .hero-copy-stage .hero-headline { max-width: 900px; font-size: clamp(2rem, 3.3vw, 3.4rem); }
+    .hero-copy-stage .hero-description { max-width: 760px; margin-bottom: 30px; }
+    @media (max-width: 700px) {
+      .brand-stage { min-height: 0; padding: 15px 20px 18px; }
+      .brand-stage .hero-brand { margin-bottom: 8px; }
+      .brand-stage .hero-label { padding: 6px 9px; font-size: .64rem; letter-spacing: .3px; }
+      .brand-scroll { display: none; }
+      .brand-stage .hero-brand::before { left: 3%; top: 14%; }
+      .brand-stage .hero-brand::after { right: 12%; bottom: 14%; }
+      .hero-copy-stage { min-height: 0; }
+      .hero-copy-stage .hero-content { padding: 48px 20px 58px; }
+      .hero-copy-stage .hero-headline { font-size: clamp(1.5rem, 6vw, 2rem); }
+    }
   </style>
 </head>
 
@@ -811,38 +872,26 @@
 
   <main>
 
-    <section class="hero">
-
-      <div class="hero-content">
-
-  <h1 class="hero-brand">
-    <img src="images/logo-completo.webp" alt="Padilla Ingeniería" width="1016" height="520" fetchpriority="high">
-  </h1>
-
-  <div class="hero-label">INGENIERÍA CIVIL · MINERÍA · CONSTRUCCIÓN</div>
-
-  <h2 class="hero-headline">Información técnica precisa para la toma de decisiones en proyectos de ingeniería.</h2>
-
-  <p class="hero-description">
-    Aplico ingeniería civil y levantamientos aerofotogramétricos para documentar el terreno, analizar proyectos y generar información técnica útil para minería, construcción y planificación.
-  </p>
-
-        <div class="buttons">
-
-          <a class="button button-primary" href="#proyectos">
-  Ver proyectos
-</a>
-
-          <a class="button button-secondary" href="#contacto">
-            Contactar
-          </a>
-
-        </div>
-
+    <section class="brand-stage" aria-label="Padilla Ingeniería">
+      <div class="brand-stage-inner">
+        <h1 class="hero-brand">
+          <img src="images/logo-completo.webp" alt="Padilla Ingeniería" width="1016" height="520" fetchpriority="high">
+        </h1>
+        <p class="hero-label">TOPOGRAFÍA · FOTOGRAMETRÍA · INGENIERÍA CIVIL</p>
+        <a class="brand-scroll" href="#presentacion">Conocer el trabajo <span aria-hidden="true">↓</span></a>
       </div>
-
     </section>
 
+    <section class="hero hero-copy-stage" id="presentacion">
+      <div class="hero-content">
+        <h2 class="hero-headline">Información técnica precisa para la toma de decisiones en proyectos de ingeniería.</h2>
+        <p class="hero-description">La ingeniería civil y los levantamientos aerofotogramétricos permiten documentar el terreno, analizar proyectos y generar información técnica útil para minería, obras civiles y planificación.</p>
+        <div class="buttons">
+          <a class="button button-primary" href="#proyectos">Ver proyectos</a>
+          <a class="button button-secondary" href="#contacto">Contactar</a>
+        </div>
+      </div>
+    </section>
 
     <section id="servicios">
 
@@ -899,7 +948,7 @@
 
     <section id="capacidades" aria-labelledby="capacidades-titulo">
       <h2 class="section-title" id="capacidades-titulo">Capacidades y herramientas</h2>
-      <p class="section-intro">Combino captura en campo, procesamiento de datos y criterio de ingeniería para entregar información aplicable a cada proyecto.</p>
+      <p class="section-intro">La captura en campo, el procesamiento de datos y el criterio de ingeniería se integran para entregar información aplicable a cada proyecto.</p>
       <div class="capabilities">
         <article class="card">
           <h3>Levantamiento en campo</h3>
@@ -982,23 +1031,23 @@
 
 <div class="vision" id="vision">
   <div class="vision-inner">
-    <h2>Mi forma de trabajo</h2>
+    <h2>Método de trabajo</h2>
     <p>Un proceso claro para convertir la información de campo en entregables útiles para el proyecto.</p>
     <div class="vision-grid">
       <div class="vision-card">
         <span class="step-number">01 · ALCANCE</span>
         <h3>Definir la necesidad</h3>
-        <p>Identifico el objetivo técnico, el área de trabajo y los datos disponibles antes de planificar el levantamiento.</p>
+        <p>Se identifica el objetivo técnico, el área de trabajo y los datos disponibles antes de planificar el levantamiento.</p>
       </div>
       <div class="vision-card">
         <span class="step-number">02 · TRABAJO TÉCNICO</span>
         <h3>Capturar y procesar</h3>
-        <p>Realizo el levantamiento y proceso la información con herramientas adecuadas a los requerimientos del proyecto.</p>
+        <p>El levantamiento y el procesamiento se ajustan a los requerimientos de cada proyecto.</p>
       </div>
       <div class="vision-card">
         <span class="step-number">03 · RESULTADOS</span>
         <h3>Entregar con claridad</h3>
-        <p>Preparo productos digitales y documentación técnica que respaldan el análisis y la toma de decisiones.</p>
+        <p>Los resultados se presentan como productos digitales y documentación técnica para respaldar el análisis y la toma de decisiones.</p>
       </div>
     </div>
   </div>
@@ -1011,7 +1060,7 @@
   </h2>
 
   <p class="section-intro">
-    Atiendo directamente las consultas sobre levantamientos aerofotogramétricos, información del terreno y documentación de proyectos. Para solicitar una propuesta, indique la ubicación, la superficie aproximada y el objetivo del trabajo.
+    Para consultas sobre levantamientos aerofotogramétricos, información del terreno o documentación técnica, indique la ubicación, la superficie aproximada y el objetivo del proyecto.
   </p>
 
 
@@ -1052,11 +1101,11 @@
     <div class="contact-action">
 
       <h3>
-        Solicitar una propuesta
+        Conversemos sobre su proyecto
       </h3>
 
       <p>
-        Puedo revisar el alcance y los productos necesarios para su proyecto. Escríbame por WhatsApp o correo electrónico.
+        Un primer contacto permite revisar el alcance, los datos disponibles y los productos que necesita el proyecto. Puede escribir por WhatsApp o correo electrónico.
       </p>
 
 
