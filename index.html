@@ -1030,6 +1030,16 @@
       hyphens: auto;
     }
     .contact-teaser .section-intro { text-align: center; }
+
+    /* Lectura continua: párrafos centrados sin separación silábica */
+    main p {
+      text-align: center !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
+    main h2, main h3 { text-align: center !important; hyphens: none; }
 </style>
   <script src="/site-nav.js" defer></script>
 </head>

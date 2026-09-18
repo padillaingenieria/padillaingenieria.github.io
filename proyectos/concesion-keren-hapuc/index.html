@@ -566,6 +566,16 @@
 
     @media (min-width: 901px) { html { font-size: 18px; } }
     main p:not(.project-category) { text-align: justify; hyphens: auto; }
+
+    /* Lectura continua: párrafos centrados sin separación silábica */
+    main p {
+      text-align: center !important;
+      hyphens: none !important;
+      -webkit-hyphens: none !important;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
+    main h2, main h3 { text-align: center !important; hyphens: none; }
 </style>
   <script src="/site-nav.js" defer></script>
 </head>
