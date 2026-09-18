@@ -276,6 +276,39 @@
         grid-template-columns: 1fr;
       }
     }
+  
+    a:focus-visible { outline: 3px solid #49a8c6; outline-offset: 3px; }
+    .section-title { text-align: center; }
+    .product-inner > h2, .project-section > h2 { text-align: center; }
+    @media (max-width: 900px) {
+      .nav, .header-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px 20px;
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px 16px;
+      }
+      nav a {
+        margin: 0;
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+      }
+    }
+    @media (max-width: 520px) {
+      .nav, .header-inner { padding: 8px 16px; }
+      nav { width: 100%; gap: 0 12px; }
+      nav a { font-size: .82rem; min-height: 38px; }
+      .project-hero h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); overflow-wrap: anywhere; }
+      .project-section, .workflow-inner, .product-inner { overflow-wrap: anywhere; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
   </style>
 </head>
 
@@ -290,6 +323,7 @@
 
       <nav>
         <a href="../../#servicios">Servicios</a>
+        <a href="../../#capacidades">Capacidades</a>
         <a href="../../#proyectos">Proyectos</a>
         <a href="../../#vision">Enfoque</a>
         <a href="../../#contacto">Contacto</a>
