@@ -560,7 +560,10 @@
     @media (prefers-reduced-motion: reduce) {
       nav#site-nav { transition: none; }
     }
-  </style>
+    @media (min-width: 701px) {
+    nav a.is-active { color: #12658b; background: transparent; box-shadow: none; border-radius: 0; font-weight: 700; }
+  }
+</style>
   <script src="/site-nav.js" defer></script>
 </head>
 
@@ -582,7 +585,7 @@
         <a href="../../#capacidades">Capacidades</a>
         <a href="../../#proyectos">Proyectos</a>
         <a href="../../#vision">Enfoque</a>
-        <a href="../../#contacto">Contacto</a>
+        <a href="/contacto/">Contacto</a>
       </nav>
 
     </div>

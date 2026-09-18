@@ -996,7 +996,26 @@
     @media (max-width: 700px) {
       .brand-stage .hero-brand::after { right: 3%; bottom: 10%; }
     }
-  </style>
+  
+    /* Ajustes de lectura y llamada de contacto */
+    @media (min-width: 701px) {
+      nav a.is-active { color: #12658b; background: transparent; box-shadow: none; border-radius: 0; font-weight: 700; }
+    }
+    .section-title, .vision h2 { font-size: clamp(2rem, 3.1vw, 2.8rem); }
+    .section-intro, .vision-inner > p { font-size: clamp(1.05rem, 1.32vw, 1.18rem); line-height: 1.75; }
+    .contact-teaser { text-align: center; background: #eaf2f6; }
+    .contact-teaser .section-intro { margin-bottom: 26px; text-align: center; }
+    .contact-teaser-link {
+      display: inline-flex; align-items: center; min-height: 46px; padding: 10px 20px;
+      color: #fff; background: #145778; border-radius: 6px; font-weight: 700;
+      text-decoration: none; transition: background .2s ease;
+    }
+    .contact-teaser-link:hover, .contact-teaser-link:focus-visible { background: #0c3e59; }
+    @media (max-width: 700px) {
+      .section-title, .vision h2 { font-size: clamp(2rem, 7.2vw, 2.45rem); }
+      .section-intro, .vision-inner > p { font-size: 1.06rem; }
+    }
+</style>
   <script src="/site-nav.js" defer></script>
 </head>
 
@@ -1018,7 +1037,7 @@
         <a href="#capacidades">Capacidades</a>
         <a href="#proyectos">Proyectos</a>
         <a href="#vision">Enfoque</a>
-        <a href="#contacto">Contacto</a>
+        <a href="/contacto/">Contacto</a>
       </nav>
 
     </div>
@@ -1044,7 +1063,7 @@
         <p class="hero-description">La ingeniería civil y los levantamientos aerofotogramétricos permiten documentar el terreno, analizar proyectos y generar información técnica útil para minería, obras civiles y planificación.</p>
         <div class="buttons">
           <a class="button button-primary" href="#proyectos">Ver proyectos</a>
-          <a class="button button-secondary" href="#contacto">Contactar</a>
+          <a class="button button-secondary" href="/contacto/">Contactar</a>
         </div>
       </div>
     </section>
@@ -1209,111 +1228,11 @@
   </div>
 </div>
 
-    <section id="contacto">
-
-  <h2 class="section-title">
-    Contacto técnico
-  </h2>
-
-  <p class="section-intro">
-    Para consultas sobre levantamientos aerofotogramétricos, información del terreno o documentación técnica, indique la ubicación, la superficie aproximada y el objetivo del proyecto.
-  </p>
-
-
-  <div class="contact-grid">
-
-
-    <div class="contact-info">
-
-      <h3>
-        Padilla Ingeniería
-      </h3>
-
-      <p>
-        Ing. Douglas Juan Padilla Huayta · Ingeniería civil
-      </p>
-
-      <p>
-        Oruro, Bolivia
-      </p>
-
-      <div class="contact-details">
-
-        <p>
-          <strong>WhatsApp</strong><br>
-          +591 71606942
-        </p>
-
-        <p>
-          <strong>Correo electrónico</strong><br>
-          dougeng2026@gmail.com
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="contact-action">
-
-      <h3>
-        Conversemos sobre su proyecto
-      </h3>
-
-      <p>
-        Un primer contacto permite revisar el alcance, los datos disponibles y los productos que necesita el proyecto. Puede escribir por WhatsApp o correo electrónico.
-      </p>
-
-
-      <div class="contact-buttons">
-
-        <a
-          href="https://wa.me/59171606942"
-          class="contact-button primary"
-          target="_blank"
-          rel="noopener"
-        >
-          Escribir por WhatsApp →
-        </a>
-
-
-        <a
-          href="mailto:dougeng2026@gmail.com"
-          class="contact-button"
-          target="_blank"
-          rel="noopener"
-        >
-          Enviar correo electrónico
-        </a>
-
-
-        <a
-          href="https://maps.app.goo.gl/nzUbUqPt8RCV5qY36"
-          class="contact-button"
-          target="_blank"
-          rel="noopener"
-        >
-          Google Business
-        </a>
-
-
-        <a
-          href="https://www.linkedin.com/in/douglas-juan-padilla-huayta-4a6b27aa"
-          class="contact-button"
-          target="_blank"
-          rel="noopener"
-        >
-          LinkedIn
-        </a>
-
-      </div>
-
-    </div>
-
-
-  </div>
-
-</section>
+    <section id="contacto" class="contact-teaser" aria-labelledby="contacto-titulo">
+      <h2 class="section-title" id="contacto-titulo">Conversemos sobre su proyecto</h2>
+      <p class="section-intro">Describa el trabajo que necesita y los datos disponibles. Puede enviar su consulta desde la página de contacto.</p>
+      <a class="contact-teaser-link" href="/contacto/">Ir a contacto →</a>
+    </section>
 
   </main>
 

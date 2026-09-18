@@ -55,7 +55,7 @@
     });
   };
   if (!onHome) {
-    setActive('proyectos');
+    setActive(window.location.pathname.startsWith('/contacto/') ? 'contacto' : 'proyectos');
     return;
   }
 
