@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Ciudadela Universitaria FNI | Padilla Ingeniería</title>
+  <title>Levantamiento fotogramétrico de la Ciudadela Universitaria FNI | Padilla Ingeniería</title>
 
     <meta name="description" content="Levantamiento fotogramétrico de la Ciudadela Universitaria FNI en Oruro, Bolivia.">
   <link rel="canonical" href="https://padillaingenieria.github.io/proyectos/ciudadela-fni/">
@@ -16,7 +16,7 @@
   <meta property="og:locale" content="es_BO">
   <meta property="og:site_name" content="Padilla Ingeniería">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Ciudadela Universitaria FNI | Padilla Ingeniería">
+  <meta property="og:title" content="Levantamiento fotogramétrico de la Ciudadela Universitaria FNI | Padilla Ingeniería">
   <meta property="og:description" content="Levantamiento fotogramétrico de la Ciudadela Universitaria FNI en Oruro, Bolivia.">
   <meta property="og:url" content="https://padillaingenieria.github.io/proyectos/ciudadela-fni/">
   <meta property="og:image" content="https://padillaingenieria.github.io/images/CIUDADELA.webp">
@@ -624,6 +624,74 @@
       header { position: sticky; top: 0; z-index: 1000; }
       [id] { scroll-margin-top: 82px; }
     }
+
+    /* Caso de estudio de Ciudadela FNI */
+    .case-introduction, .case-results, .case-products { max-width: 1120px; }
+    .case-introduction h2, .case-results h2, .case-products h2,
+    .case-band h2, .case-gallery h2 { color:#123b5d; font-size:clamp(1.8rem,3vw,2.35rem); line-height:1.2; text-align:center; margin:0 0 22px; }
+    .case-lead { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(250px,.75fr); align-items:start; gap:48px; }
+    .case-lead > div { align-self:center; }
+    .case-lead p, .case-band p, .case-results p, .case-products p { max-width:850px; color:#506779; font-size:1.06rem; line-height:1.8; margin:0 auto; text-align:center; }
+    .case-band { background:#eaf0f4; max-width:none; }
+    .case-band-inner { max-width:1120px; margin:auto; padding:74px 30px; }
+    .case-band-inner > article + article { margin-top:40px; padding-top:40px; border-top:1px solid #cfdee7; }
+    .case-band-inner > article p { max-width:850px; }
+    .technical-data { text-align:center; }
+    .technical-data h3 { color:#123b5d; }
+    .results-table-wrap { overflow-x:auto; border:1px solid #dce6ed; border-radius:10px; background:#fff; margin:32px auto 26px; box-shadow:0 8px 24px rgba(18,59,93,.05); }
+    .case-results table { width:100%; border-collapse:collapse; text-align:center; min-width:540px; }
+    .case-results caption { text-align:left; padding:16px 20px 0; color:#536b7b; font-weight:700; }
+    .case-results th, .case-results td { padding:17px 18px; border-bottom:1px solid #e1e9ee; }
+    .case-results thead { background:#123b5d; color:#fff; }
+    .case-results th { font-weight:700; }
+    .case-results tbody th { color:#123b5d; }
+    .case-results tbody tr:last-child th, .case-results tbody tr:last-child td { border-bottom:0; }
+    .case-results tbody tr:nth-child(even) { background:#f5f9fb; }
+    .case-steps { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; margin-top:34px; }
+    .case-steps article { background:#fff; padding:28px; border:1px solid #dae6ec; border-radius:10px; text-align:center; }
+    .case-steps span { display:block; color:#2c7797; font-size:.76rem; font-weight:700; letter-spacing:.08em; margin-bottom:10px; }
+    .case-steps h3 { color:#123b5d; font-size:1.25rem; line-height:1.3; margin-bottom:10px; }
+    .case-steps p { font-size:.98rem; }
+    .case-products { padding-top:68px; padding-bottom:68px; }
+    .case-gallery { background:#eaf0f4; }
+    .case-gallery-inner { max-width:1120px; padding:76px 30px 84px; margin:auto; }
+    .gallery-feature { margin:32px auto 30px; background:#fff; border:1px solid #dce6ed; border-radius:10px; padding:12px; text-align:center; box-shadow:0 10px 28px rgba(18,59,93,.07); }
+    .gallery-feature-button { display:block; width:100%; border:0; padding:0; background:transparent; cursor:zoom-in; }
+    .gallery-feature img { display:block; width:100%; max-height:700px; height:auto; object-fit:contain; }
+    .gallery-feature figcaption { color:#5d7181; padding:12px 6px 3px; font-size:.9rem; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+    .gallery-thumb { min-width:0; border:1px solid #dce6ed; border-radius:8px; padding:8px; background:#fff; color:#405c70; cursor:zoom-in; text-align:center; }
+    .gallery-thumb:hover, .gallery-thumb:focus-visible { border-color:#3082a3; }
+    .gallery-thumb img { display:block; width:100%; height:140px; object-fit:contain; background:#f5f7fa; border-radius:4px; }
+    .gallery-thumb span { display:block; min-height:2.8em; font-size:.78rem; line-height:1.4; padding:9px 2px 2px; }
+    .gallery-lightbox { width:min(1100px,96vw); max-width:none; max-height:95vh; padding:16px; border:0; border-radius:10px; background:#fff; color:#17202a; }
+    .gallery-lightbox::backdrop { background:rgba(5,23,37,.9); }
+    .lightbox-top { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+    .lightbox-counter { color:#49687d; font-size:.9rem; }
+    .lightbox-close, .lightbox-prev, .lightbox-next { border:1px solid #b5cbd8; background:#fff; color:#123b5d; border-radius:6px; cursor:pointer; font:700 1rem Arial,sans-serif; }
+    .lightbox-close { padding:9px 14px; }
+    .lightbox-stage { display:grid; grid-template-columns:48px minmax(0,1fr) 48px; align-items:center; gap:10px; }
+    .lightbox-stage img { display:block; max-width:100%; max-height:calc(95vh - 125px); width:auto; height:auto; margin:auto; object-fit:contain; }
+    .lightbox-prev, .lightbox-next { width:48px; height:58px; font-size:2rem; }
+    .lightbox-caption { text-align:center !important; color:#3d5a6d; padding:10px 4px 0; font-size:.93rem; }
+    @media(max-width:800px) {
+      .case-lead { grid-template-columns:1fr; gap:26px; }
+      .case-steps { grid-template-columns:1fr; }
+      .gallery-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @media(max-width:700px) {
+      .case-band-inner, .case-gallery-inner { padding:56px 20px; }
+      .case-results table { min-width:480px; font-size:.88rem; }
+      .case-results th, .case-results td { padding:12px 10px; }
+      .gallery-grid { gap:10px; }
+      .gallery-thumb img { height:105px; }
+      .gallery-feature { padding:7px; }
+      .gallery-lightbox { width:100vw; max-height:100dvh; height:100dvh; border-radius:0; padding:12px; }
+      .lightbox-stage { grid-template-columns:36px minmax(0,1fr) 36px; gap:3px; }
+      .lightbox-prev, .lightbox-next { width:36px; height:48px; }
+      .lightbox-stage img { max-height:calc(100dvh - 150px); }
+    }
+    @media(max-width:360px) { .gallery-grid { grid-template-columns:1fr 1fr; } .gallery-thumb span { font-size:.72rem; } }
 </style>
 
   <script src="/site-nav.js" defer></script>
@@ -660,191 +728,106 @@
 
 
   <main>
-
-    <!-- HERO -->
-
-    <section class="project-hero">
-
-      <div class="project-hero-inner">
-
-        <div class="project-label">
-          LEVANTAMIENTO FOTOGRAMÉTRICO
-        </div>
-
-        <h1>
-          Levantamiento fotogramétrico de la Ciudadela Universitaria de la Facultad Nacional de Ingeniería
-        </h1>
-
-        <div class="project-location">
-          Oruro · Bolivia
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- INTRODUCCIÓN -->
-
-    <section class="project-section">
-
-      <div class="project-intro">
-
-        <div>
-
-          <h2>
-            Del vuelo a la información espacial
-          </h2>
-
-          <p>
-            Este proyecto comprende el levantamiento aéreo y el
-            procesamiento fotogramétrico de la Ciudadela Universitaria
-            de la Facultad Nacional de Ingeniería.
-          </p>
-
-          <p>
-            Mediante la captura de imágenes aéreas y su procesamiento
-            fotogramétrico se generaron productos digitales destinados
-            a apoyar la representación, visualización y análisis
-            del terreno.
-          </p>
-
-          <p>
-            El proyecto forma parte del enfoque de Padilla Ingeniería:
-            utilizar la tecnología geoespacial como herramienta para
-            transformar información del terreno en productos útiles
-            para proyectos de ingeniería.
-          </p>
-
-        </div>
-
-
-        <div class="technical-data">
-
-          <h3>
-            Ficha técnica
-          </h3>
-
-          <div class="technical-item">
-            <strong>Ubicación</strong>
-            <span>Oruro, Bolivia</span>
-          </div>
-
-          <div class="technical-item">
-            <strong>Tecnología</strong>
-            <span>DJI Phantom 4 Pro</span>
-          </div>
-
-          <div class="technical-item">
-            <strong>Método</strong>
-            <span>Aerofotogrametría</span>
-          </div>
-
-          <div class="technical-item">
-            <strong>Productos</strong>
-            <span>Ortofoto · MDE · Información espacial</span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ORTOFOTO -->
-
-    <section class="product-section">
-
-      <div class="product-inner">
-
-        <h2>
-          Ortofoto
-        </h2>
-
-        <p>
-          Producto fotogramétrico generado a partir de las imágenes
-          aéreas obtenidas durante el levantamiento.
-        </p>
-
-        <div class="orthophoto">
-
-          <img
-            src="../../images/CIUDADELA.webp"
-            alt="Ortofoto de la Ciudadela Universitaria de la Facultad Nacional de Ingeniería"
-          >
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PRODUCTOS -->
-
-    <section class="project-section">
-
-      <h2 class="project-intro h2">
-        Productos del levantamiento
-      </h2>
-
-      <div class="products">
-
-        <div class="product-card">
-
-          <h3>Ortofoto</h3>
-
-          <p>
-            Representación aérea corregida geométricamente para
-            facilitar la visualización y análisis espacial.
-          </p>
-
-        </div>
-
-
-        <div class="product-card">
-
-          <h3>MDE</h3>
-
-          <p>
-            Modelo digital de elevación generado a partir del
-            procesamiento fotogramétrico.
-          </p>
-
-        </div>
-
-
-        <div class="product-card">
-
-          <h3>Modelo 3D</h3>
-
-          <p>
-            Visualización tridimensional del área levantada,
-            prevista para incorporarse como recurso interactivo.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- REGRESAR -->
-
-    <div class="back-section">
-
-      <a
-        class="back-link"
-        href="../../index.html#proyectos"
-      >
-        ← Volver al portafolio
-      </a>
-
+  <section class="project-hero">
+    <div class="project-hero-inner">
+      <div class="project-label">LEVANTAMIENTO FOTOGRAMÉTRICO</div>
+      <h1>Levantamiento fotogramétrico de la Ciudadela Universitaria FNI</h1>
+      <div class="project-location">Oruro · Bolivia</div>
     </div>
+  </section>
 
-  </main>
+  <section class="project-section case-introduction" aria-labelledby="introduccion-titulo">
+    <div class="case-lead">
+      <div>
+        <h2 id="introduccion-titulo">Introducción</h2>
+        <p>Se realizó el levantamiento fotogramétrico de un sector de aproximadamente 60 hectáreas de la Ciudadela Universitaria de la Facultad Nacional de Ingeniería, con el objetivo de cuantificar y representar técnicamente la superficie mediante información obtenida desde UAV y control topográfico terrestre.</p>
+      </div>
+      <aside class="technical-data" aria-label="Datos del levantamiento">
+        <h3>Datos del proyecto</h3>
+        <div class="technical-item"><strong>Área de estudio</strong><span>Aproximadamente 60 hectáreas</span></div>
+        <div class="technical-item"><strong>Control terrestre</strong><span>Poligonal con estación total</span></div>
+        <div class="technical-item"><strong>Puntos de apoyo</strong><span>Ocho</span></div>
+        <div class="technical-item"><strong>Alturas de vuelo</strong><span>50, 80 y 100 m</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="case-band" aria-label="Desarrollo del trabajo">
+    <div class="case-band-inner">
+      <article>
+        <h2>Objetivo</h2>
+        <p>El trabajo tuvo como objetivo determinar y documentar la extensión del área de estudio, evaluando además el comportamiento de los resultados fotogramétricos obtenidos a diferentes alturas de vuelo.</p>
+      </article>
+      <article>
+        <h2>Control topográfico</h2>
+        <p>Para proporcionar control geométrico al levantamiento se estableció una poligonal mediante estación total. A partir de esta red se determinaron con precisión las coordenadas de ocho puntos de apoyo fotogramétrico, distribuidos en toda la superficie de estudio.</p>
+      </article>
+      <article>
+        <h2>Levantamiento aerofotogramétrico</h2>
+        <p>Se realizaron vuelos fotogramétricos a alturas de 50, 80 y 100 metros, manteniendo puntos de apoyo distribuidos sobre el área de aproximadamente 60 hectáreas. Los diferentes escenarios permitieron comparar la calidad posicional de los resultados obtenidos en planimetría y altimetría.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="project-section case-results" aria-labelledby="resultados-titulo">
+    <h2 id="resultados-titulo">Resultados</h2>
+    <div class="results-table-wrap">
+      <table>
+        <caption>Desviaciones estándar según altura de vuelo</caption>
+        <thead><tr><th scope="col">Altura de vuelo</th><th scope="col">Desviación estándar planimétrica σ<sub>x,y</sub></th><th scope="col">Desviación estándar altimétrica σ<sub>z</sub></th></tr></thead>
+        <tbody>
+          <tr><th scope="row">50 m</th><td>0.044 m</td><td>0.100 m</td></tr>
+          <tr><th scope="row">80 m</th><td>0.037 m</td><td>0.068 m</td></tr>
+          <tr><th scope="row">100 m</th><td>0.041 m</td><td>0.057 m</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="results-note">Los resultados muestran desviaciones estándar planimétricas comprendidas entre 0.037 y 0.044 m, mientras que las desviaciones altimétricas estuvieron entre 0.057 y 0.100 m. En las condiciones evaluadas, el vuelo a 80 m presentó la menor desviación estándar planimétrica, mientras que el vuelo a 100 m presentó la menor desviación estándar altimétrica.</p>
+  </section>
+
+  <section class="case-band workflow-band" aria-labelledby="flujo-titulo">
+    <div class="case-band-inner">
+      <h2 id="flujo-titulo">Flujo de trabajo</h2>
+      <div class="case-steps">
+        <article><span>01 · CONTROL TOPOGRÁFICO</span><h3>Control topográfico</h3><p>Establecimiento de una poligonal con estación total y determinación de ocho puntos de apoyo fotogramétrico distribuidos en el área de estudio.</p></article>
+        <article><span>02 · CAPTURA AÉREA</span><h3>Captura aérea</h3><p>Ejecución de vuelos fotogramétricos a alturas de 50, 80 y 100 metros.</p></article>
+        <article><span>03 · PROCESAMIENTO</span><h3>Procesamiento</h3><p>Procesamiento de las fotografías y utilización de los puntos de apoyo para el control y ajuste de los productos fotogramétricos.</p></article>
+        <article><span>04 · EVALUACIÓN</span><h3>Evaluación</h3><p>Comparación de las desviaciones estándar planimétricas y altimétricas obtenidas para las diferentes alturas de vuelo.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="project-section case-products" aria-labelledby="productos-titulo">
+    <h2 id="productos-titulo">Productos</h2>
+    <p>Ortofoto · Modelo digital de elevación · Modelo tridimensional · Información planimétrica y altimétrica del área de estudio.</p>
+  </section>
+
+  <section class="case-gallery" aria-labelledby="galeria-titulo">
+    <div class="case-gallery-inner">
+      <h2 id="galeria-titulo">Galería del proyecto</h2>
+      <figure class="gallery-feature">
+        <button type="button" class="gallery-feature-button" aria-label="Abrir ortofotografía general en el visor"><img src="../../images/ciudadela/ortofotografia-general.webp" alt="Ortofotografía general del área de estudio" width="839" height="690" loading="lazy" decoding="async"></button>
+        <figcaption>Ortofotografía general del área de estudio</figcaption>
+      </figure>
+      <div class="gallery-grid" aria-label="Imágenes del proyecto"><button class="gallery-thumb" type="button" data-index="0" aria-label="Abrir imagen 1: Ortofotografía general del área de estudio"><img src="../../images/ciudadela/ortofotografia-general.webp" alt="" width="839" height="690" loading="lazy" decoding="async"><span>Ortofotografía general del área de estudio</span></button>
+<button class="gallery-thumb" type="button" data-index="1" aria-label="Abrir imagen 2: Modelo digital de superficie"><img src="../../images/ciudadela/modelo-digital-superficie.webp" alt="" width="876" height="687" loading="lazy" decoding="async"><span>Modelo digital de superficie</span></button>
+<button class="gallery-thumb" type="button" data-index="2" aria-label="Abrir imagen 3: Representación de elevaciones del área de estudio"><img src="../../images/ciudadela/elevaciones-detalle.webp" alt="" width="689" height="746" loading="lazy" decoding="async"><span>Representación de elevaciones del área de estudio</span></button>
+<button class="gallery-thumb" type="button" data-index="3" aria-label="Abrir imagen 4: Modelo digital del terreno"><img src="../../images/ciudadela/modelo-digital-terreno.webp" alt="" width="689" height="727" loading="lazy" decoding="async"><span>Modelo digital del terreno</span></button>
+<button class="gallery-thumb" type="button" data-index="4" aria-label="Abrir imagen 5: Estación total empleada en el control topográfico"><img src="../../images/ciudadela/estacion-total.webp" alt="" width="504" height="897" loading="lazy" decoding="async"><span>Estación total empleada en el control topográfico</span></button>
+<button class="gallery-thumb" type="button" data-index="5" aria-label="Abrir imagen 6: Detalle de la ortofotografía"><img src="../../images/ciudadela/ortofotografia-detalle.webp" alt="" width="646" height="844" loading="lazy" decoding="async"><span>Detalle de la ortofotografía</span></button>
+<button class="gallery-thumb" type="button" data-index="6" aria-label="Abrir imagen 7: Punto de apoyo fotogramétrico"><img src="../../images/ciudadela/punto-apoyo.webp" alt="" width="293" height="407" loading="lazy" decoding="async"><span>Punto de apoyo fotogramétrico</span></button>
+<button class="gallery-thumb" type="button" data-index="7" aria-label="Abrir imagen 8: Puntos de apoyo representados sobre la ortofotografía"><img src="../../images/ciudadela/puntos-apoyo-ortofoto.webp" alt="" width="621" height="706" loading="lazy" decoding="async"><span>Puntos de apoyo representados sobre la ortofotografía</span></button></div>
+    </div>
+  </section>
+
+  <div class="back-section"><a class="back-link" href="../../index.html#proyectos">← Volver al portafolio</a></div>
+
+  <dialog class="gallery-lightbox" id="gallery-lightbox" aria-label="Visor de imágenes del proyecto">
+    <div class="lightbox-top"><span class="lightbox-counter" aria-live="polite"></span><button type="button" class="lightbox-close" aria-label="Cerrar visor">Cerrar ×</button></div>
+    <div class="lightbox-stage"><button type="button" class="lightbox-prev" aria-label="Imagen anterior">‹</button><img alt=""><button type="button" class="lightbox-next" aria-label="Imagen siguiente">›</button></div>
+    <p class="lightbox-caption" aria-live="polite"></p>
+  </dialog>
+</main>
 
 
   <footer>
@@ -853,6 +836,51 @@
 
   </footer>
 
+<script>
+  (() => {
+    const dialog = document.getElementById('gallery-lightbox');
+    const thumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
+    const feature = document.querySelector('.gallery-feature-button');
+    const image = dialog.querySelector('.lightbox-stage img');
+    const caption = dialog.querySelector('.lightbox-caption');
+    const counter = dialog.querySelector('.lightbox-counter');
+    const close = dialog.querySelector('.lightbox-close');
+    let current = 0;
+    let touchStartX = 0;
+
+    function show(index) {
+      current = (index + thumbs.length) % thumbs.length;
+      const thumb = thumbs[current];
+      const source = thumb.querySelector('img');
+      image.src = source.src;
+      image.alt = thumb.querySelector('span').textContent;
+      caption.textContent = image.alt;
+      counter.textContent = (current + 1) + ' / ' + thumbs.length;
+    }
+    function open(index) {
+      show(index);
+      dialog.showModal();
+      close.focus();
+    }
+
+    feature.addEventListener('click', () => open(0));
+    thumbs.forEach((thumb, index) => thumb.addEventListener('click', () => open(index)));
+    close.addEventListener('click', () => dialog.close());
+    dialog.querySelector('.lightbox-prev').addEventListener('click', () => show(current - 1));
+    dialog.querySelector('.lightbox-next').addEventListener('click', () => show(current + 1));
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') { event.preventDefault(); show(current - 1); }
+      if (event.key === 'ArrowRight') { event.preventDefault(); show(current + 1); }
+    });
+    dialog.addEventListener('touchstart', (event) => {
+      touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+    dialog.addEventListener('touchend', (event) => {
+      const distance = event.changedTouches[0].screenX - touchStartX;
+      if (Math.abs(distance) > 45) show(current + (distance < 0 ? 1 : -1));
+    }, { passive: true });
+  })();
+</script>
 </body>
 
 </html>
