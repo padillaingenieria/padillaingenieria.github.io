@@ -735,6 +735,54 @@
     @media (prefers-reduced-motion: reduce) {
       .hero-brand::before, .hero-brand::after { animation: none; }
     }
+
+    /* Portafolio resumido: detalles en cada ficha */
+    .project-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,.065);
+    }
+    .project-card + .project-card { margin-top: 0; }
+    .project-image { min-height: 0; aspect-ratio: 16 / 9; }
+    .project-image img { position: absolute; inset: 0; }
+    .project-content { flex: 1; padding: 26px 28px 28px; align-items: flex-start; }
+    .project-category { margin-bottom: 9px; }
+    .project-content h3 { font-size: clamp(1.28rem, 2vw, 1.65rem); margin-bottom: 18px; text-align: left; overflow-wrap: normal; }
+    .project-link { margin-top: auto; border-bottom: 1px solid #7da8bf; padding-bottom: 3px; }
+    .step-number { display: block; color: #97d2e3; font-size: .75rem; font-weight: 700; letter-spacing: .12em; margin-bottom: 12px; }
+    .vision-card h3 { text-align: left; }
+    .vision-card p { text-align: left; }
+    /* Pixel de marca presente en los encabezados, también en móvil */
+    .section-title::after, .vision h2::after {
+      width: 8px; height: 8px; margin-top: 20px;
+      box-shadow: 13px -5px #5db4cf, 26px 3px #176083, 39px -2px #91cee1;
+      transform: translateX(-19px);
+      animation: pixel-drift 4s ease-in-out infinite;
+    }
+    .hero-brand::before, .hero-brand::after { width: 9px; height: 9px; box-shadow: 16px -8px #297ca8, 32px 5px #a3d9e9; }
+    @keyframes pixel-drift {
+      0%, 100% { opacity: .6; translate: 0 0; }
+      50% { opacity: 1; translate: 0 -7px; }
+    }
+    @media (max-width: 700px) {
+      .project-list { grid-template-columns: 1fr; }
+      .project-image { aspect-ratio: 16 / 9; }
+      .project-content { padding: 22px; }
+      .project-content h3 { font-size: 1.45rem; }
+      .hero-brand::before, .hero-brand::after {
+        display: block;
+        z-index: 2;
+        width: 7px; height: 7px;
+        box-shadow: 12px -6px #297ca8, 24px 4px #a3d9e9;
+      }
+      .hero-brand::before { left: 7px; top: 14%; }
+      .hero-brand::after { right: 30px; bottom: 15%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .section-title::after, .vision h2::after { animation: none; }
+    }
   </style>
 </head>
 
@@ -774,9 +822,7 @@
   <h2 class="hero-headline">Información técnica precisa para la toma de decisiones en proyectos de ingeniería.</h2>
 
   <p class="hero-description">
-    Aplicamos ingeniería civil y levantamientos aerofotogramétricos para documentar
-    el terreno, analizar proyectos y generar información técnica útil para minería,
-    construcción y planificación.
+    Aplico ingeniería civil y levantamientos aerofotogramétricos para documentar el terreno, analizar proyectos y generar información técnica útil para minería, construcción y planificación.
   </p>
 
         <div class="buttons">
@@ -803,9 +849,7 @@
       </h2>
 
       <p class="section-intro">
-        Integramos criterio de ingeniería civil, levantamientos aerofotogramétricos
-        y herramientas digitales para producir información técnica aplicable
-        a minería, construcción y planificación de proyectos.
+        La ingeniería civil, los levantamientos aerofotogramétricos y las herramientas digitales se combinan para producir información técnica aplicable a minería, construcción y planificación de proyectos.
       </p>
 
 
@@ -853,7 +897,7 @@
 
     <section id="capacidades" aria-labelledby="capacidades-titulo">
       <h2 class="section-title" id="capacidades-titulo">Capacidades y herramientas</h2>
-      <p class="section-intro">Combinamos captura en campo, procesamiento de datos y criterio de ingeniería para entregar información que se pueda aplicar al proyecto.</p>
+      <p class="section-intro">Combino captura en campo, procesamiento de datos y criterio de ingeniería para entregar información aplicable a cada proyecto.</p>
       <div class="capabilities">
         <article class="card">
           <h3>Levantamiento en campo</h3>
@@ -883,239 +927,89 @@
         </p>
 
 
-       <div class="project-card">
-
-  <div class="project-image">
-    <img loading="lazy" decoding="async"
-      src="images/CIUDADELA.webp"
-      alt="Ortofoto de la Ciudadela Universitaria de la Facultad Nacional de Ingeniería"
-    >
-    <span>PROYECTO 01</span>
-  </div>
-
-  <div class="project-content">
-
-    <div class="project-category">
-      LEVANTAMIENTO FOTOGRAMÉTRICO
-    </div>
-
-    <h3>
-      Levantamiento fotogramétrico de la Ciudadela Universitaria de la Facultad Nacional de Ingeniería
-    </h3>
-
-    <p>
-      Levantamiento aéreo y procesamiento fotogramétrico de la
-      Ciudadela Universitaria para generar productos digitales
-      de apoyo a la representación y análisis del terreno.
-    </p>
-
-    <div class="project-data">
-      <p><strong>Ubicación:</strong> Oruro, Bolivia</p>
-      <p><strong>Tecnología:</strong> DJI Phantom 4 Pro · Aerofotogrametría</p>
-      <p><strong>Productos:</strong> Ortofoto · MDE · Información espacial</p>
-    </div>
-
-    <a href="/proyectos/ciudadela-fni/" class="project-link">
-      Ver proyecto →
-    </a>
-
-  </div>
-
-</div>
-<div class="project-card">
-
-  <div class="project-image">
-    <img loading="lazy" decoding="async"
-      src="images/IMPLANTACION.png"
-      alt="Levantamiento fotogramétrico para cálculo de excavación e implantación de edificio"
-    >
-    <span>PROYECTO 02</span>
-  </div>
-
-  <div class="project-content">
-
-    <div class="project-category">
-      FOTOGRAMETRÍA · BIM
-    </div>
-
-    <h3>
-      Cálculo de volumen de excavación e implantación de edificio
-    </h3>
-
-    <p>
-      Levantamiento fotogramétrico del terreno para determinar el
-      volumen de excavación necesario y apoyar posteriormente la
-      implantación del modelo BIM del edificio.
-    </p>
-
-    <div class="project-data">
-      <p><strong>Ubicación:</strong> Oruro, Bolivia</p>
-      <p><strong>Tecnología:</strong> Drone · Aerofotogrametría · BIM</p>
-      <p><strong>Productos:</strong> MDE · Curvas de nivel</p>
-    </div>
-
-    <a href="/proyectos/implantacion-edificio/" class="project-link">
-      Ver proyecto →
-    </a>
-
-  </div>
-
-</div>
-
-     <div class="project-card">
-
-  <div class="project-image">
-    <img loading="lazy" decoding="async"
-      src="images/MARISCAL.png"
-      alt="Levantamiento fotogramétrico de la concesión minera Mariscal"
-    >
-    <span>PROYECTO 03</span>
-  </div>
-
-  <div class="project-content">
-
-    <div class="project-category">
-      FOTOGRAMETRÍA · MINERÍA · GEOFÍSICA
-    </div>
-
-    <h3>
-      Levantamiento fotogramétrico de la concesión minera Mariscal
-    </h3>
-
-    <p>
-      Levantamiento fotogramétrico de la concesión minera para generar
-      información espacial e integrar el modelo 3D con resultados de
-      geofísica y labores mineras.
-    </p>
-
-    <div class="project-data">
-      <p><strong>Ubicación:</strong> Potosí, Bolivia</p>
-      <p><strong>Tecnología:</strong> Drone · Topografía · Aerofotogrametría</p>
-      <p><strong>Productos:</strong> Ortofoto · MDE · Curvas de nivel · Cartografía georreferenciada</p>
-    </div>
-
-    <a href="/proyectos/concesion-mariscal/" class="project-link">
-      Ver proyecto →
-    </a>
-
-  </div>
-
-</div>  
-
-  <div class="project-card">
-
-  <div class="project-image">
-    <img loading="lazy" decoding="async"
-      src="images/KERENHAPUC.png"
-      alt="Levantamiento fotogramétrico de la concesión minera Keren Hapuc"
-    >
-    <span>PROYECTO 04</span>
-  </div>
-
-  <div class="project-content">
-
-    <div class="project-category">
-      FOTOGRAMETRÍA · MINERÍA · GEOFÍSICA
-    </div>
-
-    <h3>
-      Levantamiento fotogramétrico de la concesión minera Keren Hapuc
-    </h3>
-
-    <p>
-      Levantamiento fotogramétrico de la concesión minera para generar
-      información espacial e integrar el modelo 3D con resultados de
-      geofísica y labores mineras.
-    </p>
-
-    <div class="project-data">
-      <p><strong>Ubicación:</strong> Potosí, Bolivia</p>
-      <p><strong>Tecnología:</strong> Drone · Topografía · Aerofotogrametría</p>
-      <p><strong>Productos:</strong> Ortofoto · MDE · Curvas de nivel · Cartografía georreferenciada</p>
-    </div>
-
-    <a href="/proyectos/concesion-keren-hapuc/" class="project-link">
-      Ver proyecto →
-    </a>
-
-  </div>
-
-</div>      
+        <div class="project-list">
+          <article class="project-card">
+            <div class="project-image">
+              <img loading="lazy" decoding="async" src="images/CIUDADELA.webp" alt="Ortofoto de la Ciudadela Universitaria de la Facultad Nacional de Ingeniería">
+              <span>PROYECTO 01</span>
+            </div>
+            <div class="project-content">
+              <p class="project-category">LEVANTAMIENTO FOTOGRAMÉTRICO</p>
+              <h3>Ciudadela Universitaria FNI</h3>
+              <a href="/proyectos/ciudadela-fni/" class="project-link" aria-label="Ver proyecto: Ciudadela Universitaria FNI">Ver proyecto <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-image">
+              <img loading="lazy" decoding="async" src="images/IMPLANTACION.png" alt="Modelo de implantación de edificio sobre terreno levantado">
+              <span>PROYECTO 02</span>
+            </div>
+            <div class="project-content">
+              <p class="project-category">FOTOGRAMETRÍA · BIM</p>
+              <h3>Volúmenes e implantación de edificio</h3>
+              <a href="/proyectos/implantacion-edificio/" class="project-link" aria-label="Ver proyecto: Volúmenes e implantación de edificio">Ver proyecto <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-image">
+              <img loading="lazy" decoding="async" src="images/MARISCAL.png" alt="Vista del levantamiento de la concesión minera Mariscal">
+              <span>PROYECTO 03</span>
+            </div>
+            <div class="project-content">
+              <p class="project-category">FOTOGRAMETRÍA · MINERÍA</p>
+              <h3>Concesión minera Mariscal</h3>
+              <a href="/proyectos/concesion-mariscal/" class="project-link" aria-label="Ver proyecto: Concesión minera Mariscal">Ver proyecto <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-image">
+              <img loading="lazy" decoding="async" src="images/KERENHAPUC.png" alt="Vista del levantamiento de la concesión minera Keren Hapuc">
+              <span>PROYECTO 04</span>
+            </div>
+            <div class="project-content">
+              <p class="project-category">FOTOGRAMETRÍA · MINERÍA</p>
+              <h3>Concesión minera Keren Hapuc</h3>
+              <a href="/proyectos/concesion-keren-hapuc/" class="project-link" aria-label="Ver proyecto: Concesión minera Keren Hapuc">Ver proyecto <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
       </div>
 
     </div>
 
 
 <div class="vision" id="vision">
-
   <div class="vision-inner">
-
-    <h2>
-      Del levantamiento a la decisión técnica
-    </h2>
-
-    <p>
-      Definimos qué información necesita el proyecto, realizamos el levantamiento y entregamos productos técnicos que apoyan el análisis y la planificación.
-    </p>
-
-
+    <h2>Mi forma de trabajo</h2>
+    <p>Un proceso claro para convertir la información de campo en entregables útiles para el proyecto.</p>
     <div class="vision-grid">
-
       <div class="vision-card">
-
-        <h3>
-          Ingeniería
-        </h3>
-
-        <p>
-          Aplicamos criterio técnico para comprender las necesidades
-          del proyecto y convertir la información obtenida en resultados
-          útiles para la toma de decisiones.
-        </p>
-
+        <span class="step-number">01 · ALCANCE</span>
+        <h3>Definir la necesidad</h3>
+        <p>Identifico el objetivo técnico, el área de trabajo y los datos disponibles antes de planificar el levantamiento.</p>
       </div>
-
-
       <div class="vision-card">
-
-        <h3>
-          Captura y procesamiento
-        </h3>
-
-        <p>
-          Capturamos datos en campo y los procesamos para representar el terreno con el nivel de detalle que requiere cada trabajo.
-        </p>
-
+        <span class="step-number">02 · TRABAJO TÉCNICO</span>
+        <h3>Capturar y procesar</h3>
+        <p>Realizo el levantamiento y proceso la información con herramientas adecuadas a los requerimientos del proyecto.</p>
       </div>
-
-
       <div class="vision-card">
-
-        <h3>
-          Integración
-        </h3>
-
-        <p>
-          Relacionamos los productos del levantamiento con topografía, geofísica, minería o BIM cuando el proyecto lo requiere.
-        </p>
-
+        <span class="step-number">03 · RESULTADOS</span>
+        <h3>Entregar con claridad</h3>
+        <p>Preparo productos digitales y documentación técnica que respaldan el análisis y la toma de decisiones.</p>
       </div>
-
     </div>
-
   </div>
-
 </div>
-
 
     <section id="contacto">
 
   <h2 class="section-title">
-    ¿Tienes un proyecto que requiere información del terreno?
+    Contacto técnico
   </h2>
 
   <p class="section-intro">
-    Cuéntanos dónde está el proyecto, qué superficie necesitas estudiar y qué producto buscas. Revisaremos el alcance técnico contigo.
+    Atiendo directamente las consultas sobre levantamientos aerofotogramétricos, información del terreno y documentación de proyectos. Para solicitar una propuesta, indique la ubicación, la superficie aproximada y el objetivo del trabajo.
   </p>
 
 
@@ -1129,7 +1023,7 @@
       </h3>
 
       <p>
-        Ingeniería civil · Aerofotogrametría · Documentación técnica
+        Ing. Douglas Juan Padilla Huayta · Ingeniería civil
       </p>
 
       <p>
@@ -1156,11 +1050,11 @@
     <div class="contact-action">
 
       <h3>
-        Hablemos de tu proyecto
+        Solicitar una propuesta
       </h3>
 
       <p>
-        Escríbenos para revisar el área, los datos disponibles y los entregables que necesitas. Te ayudaremos a definir un alcance adecuado para tu proyecto.
+        Puedo revisar el alcance y los productos necesarios para su proyecto. Escríbame por WhatsApp o correo electrónico.
       </p>
 
 
@@ -1172,7 +1066,7 @@
           target="_blank"
           rel="noopener"
         >
-          WhatsApp →
+          Escribir por WhatsApp →
         </a>
 
 
@@ -1182,7 +1076,7 @@
           target="_blank"
           rel="noopener"
         >
-          Correo electrónico
+          Enviar correo electrónico
         </a>
 
 
