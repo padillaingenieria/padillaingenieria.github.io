@@ -506,6 +506,53 @@
     grid-template-columns:1fr;
   }
     }
+
+    /* Navegación y lectura en pantallas pequeñas */
+    [id] { scroll-margin-top: 110px; }
+    a:focus-visible { outline: 3px solid #49a8c6; outline-offset: 3px; }
+    .capabilities {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .project-content h3 { overflow-wrap: anywhere; }
+    @media (max-width: 900px) {
+      .nav { flex-wrap: wrap; justify-content: center; gap: 8px 20px; }
+      nav { display: flex; flex-wrap: wrap; justify-content: center; row-gap: 5px; }
+      nav a { margin: 0 10px; min-height: 40px; display: inline-flex; align-items: center; }
+      .capabilities { grid-template-columns: 1fr; }
+      .project-card { grid-template-columns: 1fr; max-width: 760px; margin-left: auto; margin-right: auto; }
+      .project-image { min-height: 0; aspect-ratio: 16 / 9; }
+      .project-image img { position: absolute; inset: 0; }
+    }
+    @media (max-width: 700px) {
+      .nav { padding: 8px 16px; gap: 4px; }
+      .logo { height: 56px; width: 100px; }
+      .logo img { width: 100px; height: 100px; }
+      nav { width: 100%; }
+      nav a { margin: 0 6px; font-size: .84rem; min-height: 38px; }
+      .hero { min-height: 0; }
+      .hero-content { padding: 78px 20px; }
+      .hero h1 { font-size: clamp(2rem, 9vw, 3rem); }
+      .hero p { font-size: 1rem; }
+      .section-title, .vision h2 { font-size: clamp(1.75rem, 7vw, 2.2rem); }
+      .projects-inner, .vision-inner { padding: 65px 20px; }
+      .project-content { padding: 26px 22px 30px; }
+      .project-content h3 { font-size: clamp(1.45rem, 6vw, 1.9rem); }
+      .project-image { aspect-ratio: 4 / 3; }
+      .contact-info, .contact-action { padding: 24px; }
+      .contact-details, .contact-buttons { overflow-wrap: anywhere; }
+      [id] { scroll-margin-top: 145px; }
+    }
+    @media (max-width: 380px) {
+      nav a { font-size: .8rem; margin: 0 4px; }
+      .button { width: 100%; text-align: center; }
+      .contact-button { font-size: .84rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .card, .contact-button { transition: none; }
+    }
   </style>
 </head>
 
@@ -520,6 +567,7 @@
 
       <nav>
         <a href="#servicios">Servicios</a>
+        <a href="#capacidades">Capacidades</a>
         <a href="#proyectos">Proyectos</a>
         <a href="#vision">Enfoque</a>
         <a href="#contacto">Contacto</a>
@@ -622,6 +670,25 @@
     </section>
 
 
+    <section id="capacidades" aria-labelledby="capacidades-titulo">
+      <h2 class="section-title" id="capacidades-titulo">Capacidades y herramientas</h2>
+      <p class="section-intro">Combinamos captura en campo, procesamiento de datos y criterio de ingeniería para entregar información que se pueda aplicar al proyecto.</p>
+      <div class="capabilities">
+        <article class="card">
+          <h3>Levantamiento en campo</h3>
+          <p>DJI Phantom 4 Pro, estación total y puntos de control terrestre para documentar el área de trabajo según los requerimientos de cada proyecto.</p>
+        </article>
+        <article class="card">
+          <h3>Procesamiento y representación</h3>
+          <p>Agisoft Metashape, Civil 3D, AutoCAD y Global Mapper para procesar fotografías y preparar ortofotos, modelos de elevación, curvas de nivel y planos.</p>
+        </article>
+        <article class="card">
+          <h3>Modelado y documentación</h3>
+          <p>Revit y CYPECAD como herramientas de apoyo al modelado, el análisis estructural y la documentación técnica de proyectos civiles.</p>
+        </article>
+      </div>
+    </section>
+
     <div class="projects" id="proyectos">
 
       <div class="projects-inner">
@@ -631,16 +698,14 @@
         </h2>
 
         <p class="section-intro">
-          Una selección de trabajos donde la información del terreno,
-          la ingeniería y las herramientas digitales se integran para
-          resolver necesidades concretas de cada proyecto.
+          Cuatro trabajos de aerofotogrametría, cálculo de volúmenes e integración de información del terreno con proyectos civiles y mineros.
         </p>
 
 
        <div class="project-card">
 
   <div class="project-image">
-    <img
+    <img loading="lazy" decoding="async"
       src="images/CIUDADELA.webp"
       alt="Ortofoto de la Ciudadela Universitaria de la Facultad Nacional de Ingeniería"
     >
@@ -679,7 +744,7 @@
 <div class="project-card">
 
   <div class="project-image">
-    <img
+    <img loading="lazy" decoding="async"
       src="images/IMPLANTACION.png"
       alt="Levantamiento fotogramétrico para cálculo de excavación e implantación de edificio"
     >
@@ -719,7 +784,7 @@
      <div class="project-card">
 
   <div class="project-image">
-    <img
+    <img loading="lazy" decoding="async"
       src="images/MARISCAL.png"
       alt="Levantamiento fotogramétrico de la concesión minera Mariscal"
     >
@@ -759,7 +824,7 @@
   <div class="project-card">
 
   <div class="project-image">
-    <img
+    <img loading="lazy" decoding="async"
       src="images/KERENHAPUC.png"
       alt="Levantamiento fotogramétrico de la concesión minera Keren Hapuc"
     >
@@ -805,13 +870,11 @@
   <div class="vision-inner">
 
     <h2>
-      Del terreno a la información.
+      Del levantamiento a la decisión técnica
     </h2>
 
     <p>
-      Integramos ingeniería y tecnología geoespacial para transformar
-      información del terreno en productos digitales útiles para el
-      análisis, la planificación y la toma de decisiones.
+      Definimos qué información necesita el proyecto, realizamos el levantamiento y entregamos productos técnicos que apoyan el análisis y la planificación.
     </p>
 
 
@@ -835,12 +898,11 @@
       <div class="vision-card">
 
         <h3>
-          Tecnología geoespacial
+          Captura y procesamiento
         </h3>
 
         <p>
-          Utilizamos drones, aerofotogrametría y herramientas digitales
-          para capturar, procesar y representar información espacial.
+          Capturamos datos en campo y los procesamos para representar el terreno con el nivel de detalle que requiere cada trabajo.
         </p>
 
       </div>
@@ -853,9 +915,7 @@
         </h3>
 
         <p>
-          Conectamos la información territorial con topografía, minería,
-          geofísica, BIM y otras disciplinas para obtener una visión
-          más completa del proyecto.
+          Relacionamos los productos del levantamiento con topografía, geofísica, minería o BIM cuando el proyecto lo requiere.
         </p>
 
       </div>
@@ -874,9 +934,7 @@
   </h2>
 
   <p class="section-intro">
-    Conversemos sobre cómo podemos apoyar tu proyecto mediante
-    levantamientos fotogramétricos, documentación aérea,
-    productos geoespaciales y herramientas digitales.
+    Cuéntanos dónde está el proyecto, qué superficie necesitas estudiar y qué producto buscas. Revisaremos el alcance técnico contigo.
   </p>
 
 
@@ -890,7 +948,7 @@
       </h3>
 
       <p>
-        Ingeniería · Minería · Construcción · Tecnología geoespacial
+        Ingeniería civil · Aerofotogrametría · Documentación técnica
       </p>
 
       <p>
@@ -921,10 +979,7 @@
       </h3>
 
       <p>
-        Si necesitas información del terreno, documentación
-        fotogramétrica o apoyo digital para tu proyecto,
-        podemos revisar tus necesidades y definir el producto
-        adecuado.
+        Escríbenos para revisar el área, los datos disponibles y los entregables que necesitas. Te ayudaremos a definir un alcance adecuado para tu proyecto.
       </p>
 
 
@@ -941,7 +996,7 @@
 
 
         <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=dougeng2026@gmail.com"
+          href="mailto:dougeng2026@gmail.com"
           class="contact-button"
           target="_blank"
           rel="noopener"
