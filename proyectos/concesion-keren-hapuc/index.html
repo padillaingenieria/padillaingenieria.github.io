@@ -443,7 +443,7 @@
     async function initializeCanvasTerrain() {
       const [metaResponse, dataResponse] = await Promise.all([
         fetch('assets/terreno-meta.json'),
-        fetch('assets/terreno-elevacion-u16.bin')
+        fetch('assets/terreno-elevacion-u16-v2.bin')
       ]);
       if (!metaResponse.ok || !dataResponse.ok) throw new Error('No se pudieron descargar los datos del terreno.');
       const meta = await metaResponse.json();
@@ -497,7 +497,9 @@
         for (let column = 0; column < columns.length - 1; column++) {
           const corners = [grid[row][column], grid[row][column + 1], grid[row + 1][column + 1], grid[row + 1][column]];
           if (corners.every(index => index >= 0)) {
-            const elevation = corners.reduce((sum, index) => sum + vertices[index].elevation, 0) / 4;
+            const elevations = corners.map(index => vertices[index].elevation);
+            if (Math.max(...elevations) - Math.min(...elevations) > .18) continue;
+            const elevation = elevations.reduce((sum, value) => sum + value, 0) / 4;
             cells.push({ corners, color: terrainColor(elevation), depth: 0 });
           }
         }
@@ -637,7 +639,7 @@
         const { OrbitControls } = controlsModule;
         const [metaResponse, dataResponse] = await Promise.all([
           fetch('assets/terreno-meta.json'),
-          fetch('assets/terreno-elevacion-u16.bin')
+          fetch('assets/terreno-elevacion-u16-v2.bin')
         ]);
         if (!metaResponse.ok || !dataResponse.ok) throw new Error('No se pudieron descargar los datos del terreno.');
         const meta = await metaResponse.json();
@@ -683,14 +685,19 @@
             colors[p + 2] = stops[lo][2] * (1 - mix) + stops[hi][2] * mix;
           }
         }
+        const maximumContinuousDifference = Math.round(65534 * .18);
+        function isContinuous(...vertices) {
+          const values = vertices.map(index => encoded[index]);
+          return Math.max(...values) - Math.min(...values) <= maximumContinuousDifference;
+        }
         for (let row = 0; row < meta.height - 1; row++) {
           for (let col = 0; col < meta.width - 1; col++) {
             const a = row * meta.width + col;
             const b = a + 1;
             const c = a + meta.width;
             const d = c + 1;
-            if (valid[a] && valid[b] && valid[c]) indices.push(a, c, b);
-            if (valid[b] && valid[c] && valid[d]) indices.push(b, c, d);
+            if (valid[a] && valid[b] && valid[c] && isContinuous(a, b, c)) indices.push(a, c, b);
+            if (valid[b] && valid[c] && valid[d] && isContinuous(b, c, d)) indices.push(b, c, d);
           }
         }
         const geometry = new THREE.BufferGeometry();
