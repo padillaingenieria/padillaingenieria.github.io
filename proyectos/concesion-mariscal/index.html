@@ -616,12 +616,25 @@
         view.zoom = Math.max(.45, Math.min(4.2, view.zoom * Math.exp(-event.deltaY * .001)));
         requestDraw();
       }, { passive: false });
+      canvas.addEventListener('keydown', event => {
+        const key = event.key.toLowerCase();
+        if (key === 'arrowleft') view.panX -= 28;
+        else if (key === 'arrowright') view.panX += 28;
+        else if (key === 'arrowup') view.panY -= 28;
+        else if (key === 'arrowdown') view.panY += 28;
+        else if (key === '+' || key === '=') view.zoom = Math.min(4.2, view.zoom * 1.12);
+        else if (key === '-' || key === '_') view.zoom = Math.max(.45, view.zoom / 1.12);
+        else if (key === 'r') { resetView(); event.preventDefault(); return; }
+        else return;
+        event.preventDefault();
+        requestDraw();
+      });
       new ResizeObserver(resize).observe(shell);
       resetButton.addEventListener('click', resetView);
       resetButton.disabled = false;
       resize();
       shell.classList.add('is-ready');
-      status.textContent = 'Modelo listo · modo compatible. Arrastre para orbitar; rueda o dos dedos para zoom; Mayús + arrastre o dos dedos para desplazar.';
+      status.textContent = 'Modelo listo · modo compatible. Arrastre: orbitar; rueda o dos dedos: zoom; Mayús, dos dedos o flechas: desplazar; R: restablecer.';
     }
 
     async function initializeTerrain() {
@@ -732,11 +745,27 @@
         controls.addEventListener('change', render);
         new ResizeObserver(resize).observe(shell);
         resetButton.addEventListener('click', resetView);
+        renderer.domElement.addEventListener('keydown', event => {
+          const key = event.key.toLowerCase();
+          const offset = new THREE.Vector3().subVectors(camera.position, controls.target);
+          if (key === 'arrowleft' || key === 'arrowright') {
+            const right = new THREE.Vector3().crossVectors(camera.up, offset).normalize().multiplyScalar(key === 'arrowleft' ? -55 : 55);
+            camera.position.add(right); controls.target.add(right);
+          } else if (key === 'arrowup' || key === 'arrowdown') {
+            const forward = new THREE.Vector3(offset.x, 0, offset.z).normalize().multiplyScalar(key === 'arrowup' ? -55 : 55);
+            camera.position.add(forward); controls.target.add(forward);
+          } else if (key === '+' || key === '=') camera.position.lerp(controls.target, .1);
+          else if (key === '-' || key === '_') camera.position.sub(controls.target).multiplyScalar(1.1).add(controls.target);
+          else if (key === 'r') { resetView(); event.preventDefault(); return; }
+          else return;
+          event.preventDefault();
+          controls.update(); render();
+        });
         resetButton.disabled = false;
         resetView();
         resize();
         shell.classList.add('is-ready');
-        status.textContent = 'Modelo listo · Arrastre para orbitar; rueda o dos dedos para zoom; botón derecho o dos dedos para desplazar.';
+        status.textContent = 'Modelo listo · Arrastre: orbitar; rueda o dos dedos: zoom; botón derecho, dos dedos o flechas: desplazar; R: restablecer.';
       })().catch(error => {
         console.error(error);
         status.textContent = 'Three.js no pudo iniciar WebGL; activando el modo de compatibilidad…';
