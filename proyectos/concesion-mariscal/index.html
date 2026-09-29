@@ -3,605 +3,217 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Concesión minera Mariscal | Padilla Ingeniería</title>
-
-    <meta name="description" content="Levantamiento fotogramétrico de la concesión minera Mariscal e integración con información geofísica y minera en Potosí, Bolivia.">
+  <title>Levantamiento aerofotogramétrico y mensura subterránea — Concesión Minera Mariscal | Padilla Ingeniería</title>
+  <meta name="description" content="Caso de estudio técnico del levantamiento aerofotogramétrico y la mensura subterránea de la Concesión Minera Mariscal en Tupiza, Potosí.">
   <link rel="canonical" href="https://padillaingenieria.github.io/proyectos/concesion-mariscal/">
   <link rel="icon" href="/images/logo-simbolo.webp" type="image/webp">
   <meta name="theme-color" content="#123b5d">
   <meta property="og:locale" content="es_BO">
   <meta property="og:site_name" content="Padilla Ingeniería">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Concesión minera Mariscal | Padilla Ingeniería">
-  <meta property="og:description" content="Levantamiento fotogramétrico de la concesión minera Mariscal e integración con información geofísica y minera en Potosí, Bolivia.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Levantamiento aerofotogramétrico y mensura subterránea — Concesión Minera Mariscal">
+  <meta property="og:description" content="Caso de estudio técnico en Tupiza, Potosí: fotogrametría, control topográfico, DEM y mensura de labores mineras.">
   <meta property="og:url" content="https://padillaingenieria.github.io/proyectos/concesion-mariscal/">
-  <meta property="og:image" content="https://padillaingenieria.github.io/images/MARISCAL.png">
-  <meta property="og:image:alt" content="Vista del terreno de la concesión minera Mariscal">
+  <meta property="og:image" content="https://padillaingenieria.github.io/images/mariscal/modelo-3d-general.webp">
+  <meta property="og:image:alt" content="Modelo tridimensional fotogramétrico de la Concesión Minera Mariscal">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <script src="/site-nav.js" defer></script>
+
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"}}
+  </script>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #243746; background: #fff; line-height: 1.65; }
+    button, input { font: inherit; }
+    img { max-width: 100%; }
+    a:focus-visible, button:focus-visible, canvas:focus-visible { outline: 3px solid #49a8c6; outline-offset: 3px; }
 
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      color: #243746;
-      background: #ffffff;
-      line-height: 1.6;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid #e5eaee;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: auto;
-      padding: 14px 30px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
-
-    .logo img {
-      width: 58px;
-      height: 58px;
-      object-fit: contain;
-      display: block;
-    }
-
-    nav {
-      display: flex;
-      gap: 28px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #345066;
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      color: #123b5d;
-    }
-
-  .project-hero {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  min-height: 65vh;
-  display: flex;
-  align-items: flex-end;
-  position: relative;
-  color: white;
-  background-image:
-    linear-gradient(
-      rgba(10,30,45,0.60),
-      rgba(10,30,45,0.72)
-    ),
-    url("../../images/MARISCAL.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-    .project-hero-inner {
-      width: 100%;
-      max-width: 1200px;
-      margin: auto;
-      padding: 80px 30px;
-    }
-
-    .project-category {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      margin-bottom: 18px;
-      color: #d7e5ee;
-    }
-
-    .project-hero h1 {
-      max-width: 850px;
-      font-size: 3.2rem;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-
-    .project-location {
-      font-size: 1rem;
-      color: #e3edf3;
-    }
-
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 90px 30px;
-    }
-
-    .section-title {
-      font-size: 2rem;
-      line-height: 1.2;
-      color: #123b5d;
-      margin-bottom: 22px;
-    }
-
-    .intro {
-      max-width: 900px;
-      color: #667788;
-      font-size: 1.05rem;
-    }
-
-    .technical-grid {
-      margin-top: 45px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .technical-card {
-      background: #f3f6f8;
-      padding: 28px;
-      border-radius: 8px;
-      border: 1px solid #e3e9ed;
-    }
-
-    .technical-card span {
-      display: block;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      color: #67839a;
-      margin-bottom: 8px;
-    }
-
-    .technical-card strong {
-      color: #28475e;
-      font-size: 1rem;
-    }
-
-    .main-image {
-      margin-top: 45px;
-    }
-
-    .main-image img {
-      width: 100%;
-      display: block;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.10);
-    }
-
-    .caption {
-      margin-top: 12px;
-      color: #7a8a96;
-      font-size: 0.85rem;
-    }
-
-    .workflow {
-      background: #eaf0f4;
-      max-width: none;
-    }
-
-    .workflow-inner {
-      max-width: 1200px;
-      margin: auto;
-      padding: 90px 30px;
-    }
-
-    .workflow-grid {
-      margin-top: 40px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .workflow-card {
-      background: #ffffff;
-      padding: 28px;
-      border-radius: 8px;
-    }
-
-    .workflow-number {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #6c8598;
-      margin-bottom: 12px;
-    }
-
-    .workflow-card h3 {
-      color: #123b5d;
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-    }
-
-    .workflow-card p {
-      color: #667788;
-      font-size: 0.92rem;
-    }
-
-   .back {
-  max-width: 1200px;
-  margin: auto;
-  padding: 90px 30px;
-  text-align: left;
-}
-
-    .back a {
-      text-decoration: none;
-      color: #123b5d;
-      font-weight: 700;
-    }
-
-    footer {
-      background: #0d2c43;
-      color: #cbd9e2;
-      text-align: center;
-      padding: 35px 20px;
-      font-size: 0.85rem;
-    }
-
-    @media (max-width: 800px) {
-      nav {
-        display: none;
-      }
-
-      .project-hero {
-        min-height: 60vh;
-      }
-
-      .project-hero h1 {
-        font-size: 2.2rem;
-      }
-
-      .technical-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .workflow-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .project-hero-inner,
-      section,
-      .workflow-inner {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-
-      .workflow-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  
-    a:focus-visible { outline: 3px solid #49a8c6; outline-offset: 3px; }
-    .section-title { text-align: center; }
-    .product-inner > h2, .project-section > h2 { text-align: center; }
-    @media (max-width: 900px) {
-      .nav, .header-inner {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 4px 20px;
-      }
-      nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 4px 16px;
-      }
-      nav a {
-        margin: 0;
-        display: inline-flex;
-        min-height: 40px;
-        align-items: center;
-      }
-    }
-    @media (max-width: 520px) {
-      .nav, .header-inner { padding: 8px 16px; }
-      nav { width: 100%; gap: 0 12px; }
-      nav a { font-size: .82rem; min-height: 38px; }
-      .project-hero h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); overflow-wrap: anywhere; }
-      .project-section, .workflow-inner, .product-inner { overflow-wrap: anywhere; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-    }
-  
-    /* Identidad común a la portada y las fichas */
-    .nav, .header-inner { padding-top: 0; padding-bottom: 0; }
-    .logo {
-      width: 110px;
-      height: 110px;
-      flex: 0 0 110px;
-      overflow: visible;
-    }
-    .logo img {
-      width: 110px;
-      height: 110px;
-      object-fit: contain;
-      transform: none;
-    }
-    .project-hero-inner, .project-intro, .product-inner, .workflow-step,
-    .workflow-card, .technical-card, .technical-data { text-align: center; }
-    .project-hero h1, .intro { margin-left: auto; margin-right: auto; }
-    .section-title, .project-intro h2, .product-inner h2, .project-section > h2 { text-align: center; }
-    .intro { text-align: center; }
-    .caption, .back, .back-section { text-align: center; }
-    @media (max-width: 900px) {
-      nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; }
-      nav a {
-        display: inline-flex;
-        align-items: center;
-        min-height: 40px;
-        margin: 3px;
-        padding: 7px 13px;
-        border: 1px solid #cbdde8;
-        border-radius: 7px;
-        background: #eef5f9;
-        color: #123b5d;
-        font-size: .85rem;
-        font-weight: 700;
-        text-decoration: none;
-      }
-      nav a:hover, nav a:focus-visible { background: #dcebf3; border-color: #86b6cf; }
-    }
-    @media (max-width: 700px) {
-      header { position: relative; }
-      .nav, .header-inner { padding: 0 12px 9px; }
-      .logo, .logo img { width: 96px; height: 96px; }
-      .logo { flex-basis: 96px; }
-      nav { width: 100%; gap: 2px; }
-      nav a { margin: 2px; padding: 7px 11px; font-size: .82rem; }
-    }
-    @media (max-width: 380px) {
-      nav a { padding: 6px 9px; font-size: .77rem; }
-    }
-  
-    /* Encabezado y tipografía comunes */
-    .nav, .header-inner { padding: 6px 30px; }
-    .logo, .logo img { width: 64px; height: 70px; }
-    .logo { flex: 0 0 64px; overflow: visible; }
-    .logo img { object-fit: contain; transform: none; }
-    .intro, .project-intro p, .product-inner > p, .workflow-step p,
-    .workflow-card p, .caption { text-align: justify; hyphens: auto; }
-    .intro { margin-left: auto; margin-right: auto; }
-    .project-intro h2, .project-section > h2, .product-inner h2,
-    .section-title { text-align: center; }
-    @media (max-width: 900px) {
-      .nav, .header-inner { padding: 5px 14px; }
-    }
-    @media (max-width: 700px) {
-      header { position: relative; }
-      .nav, .header-inner {
-        display: grid;
-        grid-template-columns: 64px minmax(0,1fr);
-        align-items: center;
-        gap: 8px;
-        padding: 4px 10px;
-      }
-      .logo, .logo img { width: 60px; height: 68px; }
-      .logo { flex: none; }
-      nav {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(6, minmax(0,1fr));
-        gap: 3px;
-        justify-content: stretch;
-      }
-      nav a {
-        grid-column: span 2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-width: 0;
-        min-height: 31px;
-        margin: 0;
-        padding: 4px 2px;
-        border: 1px solid #cbdde8;
-        border-radius: 7px;
-        background: #eef5f9;
-        color: #123b5d;
-        font-size: .69rem;
-        font-weight: 700;
-        line-height: 1.05;
-        text-decoration: none;
-        white-space: nowrap;
-      }
-      nav a:nth-last-child(-n+2) { grid-column: span 3; }
-      nav a:hover, nav a:focus-visible { background: #dcebf3; border-color: #86b6cf; }
-    }
-    @media (max-width: 380px) {
-      .nav, .header-inner { grid-template-columns: 55px minmax(0,1fr); gap: 5px; }
-      .logo, .logo img { width: 53px; height: 60px; }
-      nav a { font-size: .62rem; padding: 3px 1px; min-height: 29px; }
-    }
-  
-    /* Navegación contextual y menú móvil */
+    header { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,.97); border-bottom: 1px solid #e2e9ed; }
+    .header-inner { max-width: 1200px; margin: auto; padding: 6px 30px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; width: 64px; height: 70px; flex: 0 0 64px; text-decoration: none; }
+    .logo img { width: 64px; height: 70px; object-fit: contain; display: block; }
+    nav { display: flex; gap: 28px; }
+    nav a { color: #345066; font-size: .95rem; font-weight: 600; text-decoration: none; }
+    nav a:hover { color: #123b5d; }
+    nav a.is-active { color: #12658b; font-weight: 700; }
     .menu-toggle, .menu-close, .menu-backdrop { display: none; }
-    nav a.is-active {
-      color: #0c5273;
-      background: #e5f3f9;
-      box-shadow: inset 0 -3px #58adc9;
-      border-radius: 5px;
-      font-weight: 700;
+
+    .project-hero {
+      min-height: 66vh;
+      display: flex;
+      align-items: flex-end;
+      color: #fff;
+      background-image: linear-gradient(rgba(7,27,42,.56),rgba(7,27,42,.82)), url("../../images/mariscal/modelo-3d-detalle.webp");
+      background-size: cover;
+      background-position: center;
+    }
+    .project-hero-inner { width: 100%; max-width: 1200px; margin: auto; padding: 86px 30px; }
+    .project-label { color: #d9e9f0; font-size: .78rem; font-weight: 700; letter-spacing: .14em; margin-bottom: 18px; }
+    .project-hero h1 { max-width: 980px; font-size: clamp(2.35rem,5vw,4.6rem); line-height: 1.04; letter-spacing: -.025em; margin-bottom: 24px; text-wrap: balance; }
+    .project-location { color: #e5eff4; font-size: 1.06rem; }
+
+    .project-section { max-width: 1120px; margin: auto; padding: 78px 30px; }
+    .section-band { max-width: none; background: #eaf0f4; }
+    .section-band-inner { max-width: 1120px; margin: auto; padding: 76px 30px; }
+    h2 { color: #123b5d; font-size: clamp(1.85rem,3vw,2.45rem); line-height: 1.2; text-align: center; margin-bottom: 22px; text-wrap: balance; }
+    h3 { color: #123b5d; }
+    main p { max-width: 880px; margin-left: auto; margin-right: auto; color: #506779; font-size: 1.04rem; line-height: 1.8; text-align: center; hyphens: none; }
+    .case-lead { display: grid; grid-template-columns: minmax(0,1.45fr) minmax(270px,.75fr); gap: 50px; align-items: center; }
+    .technical-data { background: #f4f7f9; border: 1px solid #dce6ec; border-radius: 10px; padding: 28px; box-shadow: 0 10px 28px rgba(18,59,93,.06); text-align: center; }
+    .technical-data h3 { font-size: 1.2rem; margin-bottom: 14px; }
+    .technical-item { padding: 11px 0; border-bottom: 1px solid #dbe5eb; }
+    .technical-item:last-child { border-bottom: 0; }
+    .technical-item strong { display: block; color: #36566c; font-size: .78rem; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 3px; }
+    .technical-item span { color: #617788; }
+
+    .field-copy { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 34px; }
+    .field-copy article { background: #fff; border: 1px solid #d9e4ea; border-radius: 10px; padding: 30px; }
+    .field-copy h3 { text-align: center; margin-bottom: 14px; font-size: 1.22rem; }
+    .field-copy p { font-size: .98rem; }
+
+    .results-table-wrap { overflow-x: auto; margin: 32px auto 28px; border: 1px solid #dce6ed; border-radius: 10px; background: #fff; box-shadow: 0 8px 24px rgba(18,59,93,.05); }
+    table { width: 100%; min-width: 680px; border-collapse: collapse; text-align: center; }
+    caption { padding: 17px 20px 4px; color: #536b7b; font-weight: 700; text-align: left; }
+    th, td { padding: 14px 18px; border-bottom: 1px solid #e1e9ee; }
+    thead { background: #123b5d; color: #fff; }
+    thead th { font-weight: 700; }
+    tbody th { color: #123b5d; font-weight: 700; text-align: left; }
+    tbody tr:nth-child(even) { background: #f5f9fb; }
+    tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+    .results-note { margin-top: 4px; }
+
+    .gallery-intro { margin-bottom: 30px; }
+    .gallery-feature { margin: 0 auto 28px; padding: 12px; background: #fff; border: 1px solid #dce6ed; border-radius: 10px; box-shadow: 0 10px 28px rgba(18,59,93,.07); text-align: center; }
+    .gallery-feature-button { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
+    .gallery-feature img { display: block; width: 100%; max-height: 700px; height: auto; object-fit: contain; border-radius: 5px; }
+    .gallery-feature figcaption { padding: 12px 6px 3px; color: #5d7181; font-size: .9rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 15px; }
+    .gallery-thumb { min-width: 0; padding: 8px; border: 1px solid #dce6ed; border-radius: 8px; background: #fff; color: #405c70; cursor: zoom-in; text-align: center; }
+    .gallery-thumb:hover, .gallery-thumb:focus-visible { border-color: #3082a3; }
+    .gallery-thumb img { display: block; width: 100%; height: 138px; object-fit: contain; background: #f4f7f9; border-radius: 4px; }
+    .gallery-thumb span { display: block; min-height: 3.1em; padding: 9px 2px 2px; font-size: .76rem; line-height: 1.42; }
+    .gallery-lightbox { width: min(1120px,96vw); max-width: none; max-height: 95vh; padding: 16px; border: 0; border-radius: 10px; background: #fff; color: #17202a; }
+    .gallery-lightbox::backdrop { background: rgba(5,23,37,.91); }
+    .lightbox-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .lightbox-counter { color: #49687d; font-size: .9rem; }
+    .lightbox-close, .lightbox-prev, .lightbox-next { border: 1px solid #b5cbd8; background: #fff; color: #123b5d; border-radius: 6px; cursor: pointer; font-weight: 700; }
+    .lightbox-close { padding: 9px 14px; }
+    .lightbox-stage { display: grid; grid-template-columns: 48px minmax(0,1fr) 48px; align-items: center; gap: 10px; }
+    .lightbox-stage img { display: block; max-width: 100%; max-height: calc(95vh - 135px); width: auto; height: auto; margin: auto; object-fit: contain; }
+    .lightbox-prev, .lightbox-next { width: 48px; height: 58px; font-size: 2rem; }
+    .lightbox-caption { padding: 10px 4px 0; color: #3d5a6d; font-size: .93rem; text-align: center; }
+
+    .underground-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(300px,.8fr); gap: 42px; align-items: center; }
+    .underground-grid p + p { margin-top: 18px; }
+    .underground-visuals { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .underground-visuals figure { background: #fff; border: 1px solid #dce6ed; border-radius: 9px; padding: 8px; }
+    .underground-visuals figure:first-child { grid-column: 1 / -1; }
+    .underground-visuals img { display: block; width: 100%; height: 190px; object-fit: contain; background: #f4f7f9; border-radius: 4px; }
+    .underground-visuals figure:first-child img { height: 245px; }
+    .underground-visuals figcaption { color: #5b7283; font-size: .76rem; line-height: 1.45; text-align: center; padding: 8px 3px 2px; }
+
+    .integrated-result { max-width: 980px; margin: auto; padding: 39px 40px; background: #f4f8fa; border: 1px solid #d6e3ea; border-left: 5px solid #2c7797; border-radius: 9px; }
+    .integrated-result h2 { font-size: clamp(1.7rem,3vw,2.15rem); }
+
+    .terrain-section { background: #0d2c43; color: #fff; }
+    .terrain-section h2 { color: #fff; }
+    .terrain-section .terrain-intro { color: #cfdee7; }
+    .terrain-shell { position: relative; width: 100%; height: clamp(500px,58vw,660px); margin-top: 34px; overflow: hidden; border: 1px solid #365a70; border-radius: 11px; background: #071c2a; box-shadow: 0 18px 42px rgba(0,0,0,.22); }
+    .terrain-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 22px; background: radial-gradient(circle at center,#163d52,#071c2a 72%); transition: opacity .2s ease; }
+    .terrain-shell.is-ready .terrain-poster { opacity: 0; pointer-events: none; }
+    .terrain-canvas { position: absolute; inset: 0; }
+    .terrain-canvas canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+    .terrain-toolbar { position: absolute; z-index: 3; top: 12px; right: 12px; display: flex; gap: 8px; }
+    .terrain-toolbar button { padding: 9px 12px; border: 1px solid rgba(255,255,255,.36); border-radius: 6px; background: rgba(8,34,50,.88); color: #fff; cursor: pointer; }
+    .terrain-toolbar button:hover { background: #175675; }
+    .terrain-status { position: absolute; z-index: 3; left: 14px; bottom: 14px; max-width: calc(100% - 28px); padding: 9px 12px; border-radius: 6px; background: rgba(5,26,40,.86); color: #e4eef3; font-size: .82rem; }
+    .terrain-load { border: 0; background: transparent; color: #fff; font-weight: 700; text-decoration: underline; cursor: pointer; }
+    .terrain-meta { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 16px; }
+    .terrain-meta div { padding: 15px 10px; border: 1px solid #35586d; border-radius: 7px; background: rgba(255,255,255,.04); text-align: center; }
+    .terrain-meta strong { display: block; color: #fff; font-size: .78rem; margin-bottom: 3px; }
+    .terrain-meta span { color: #bdced8; font-size: .82rem; }
+    .terrain-caption { color: #bdced8 !important; font-size: .88rem !important; margin-top: 15px; }
+
+    .products-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 960px; margin: 30px auto 0; list-style: none; }
+    .products-list li { padding: 10px 15px; border: 1px solid #cadbe4; border-radius: 999px; background: #f5f9fb; color: #36566c; font-size: .9rem; }
+    .back-section { max-width: 1120px; margin: auto; padding: 52px 30px 82px; text-align: center; }
+    .back-link { color: #123b5d; font-weight: 700; text-decoration: none; }
+    .back-link:hover { text-decoration: underline; }
+    footer { background: #0c2638; color: #b9c6cf; text-align: center; padding: 30px 20px; font-size: .88rem; }
+
+    @media (min-width: 901px) { html { font-size: 18px; } }
+    @media (max-width: 900px) {
+      .header-inner { padding: 5px 14px; }
+      .case-lead, .underground-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      .terrain-meta { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 700px) {
-      header { position: relative; z-index: 1000; }
-      .nav, .header-inner {
-        display: grid;
-        grid-template-columns: 44px minmax(0,1fr) 44px;
-        align-items: center;
-        gap: 0;
-        min-height: 70px;
-        padding: 4px 14px;
-      }
-      .menu-toggle {
-        display: flex;
-        grid-column: 1;
-        grid-row: 1;
-        align-items: center;
-        justify-content: center;
-        width: 42px;
-        height: 42px;
-        border: 1px solid #cbdde8;
-        border-radius: 8px;
-        background: #f5fafc;
-        cursor: pointer;
-      }
-      .menu-icon, .menu-icon::before, .menu-icon::after {
-        display: block;
-        width: 21px;
-        height: 2px;
-        border-radius: 2px;
-        background: #123b5d;
-      }
+      header { position: sticky; top: 0; }
+      .header-inner { display: grid; grid-template-columns: 44px minmax(0,1fr) 44px; align-items: center; gap: 0; min-height: 70px; padding: 4px 14px; }
+      .menu-toggle { display: flex; grid-column: 1; grid-row: 1; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid #cbdde8; border-radius: 8px; background: #f5fafc; cursor: pointer; }
+      .menu-icon, .menu-icon::before, .menu-icon::after { display: block; width: 21px; height: 2px; border-radius: 2px; background: #123b5d; }
       .menu-icon { position: relative; }
       .menu-icon::before, .menu-icon::after { content: ""; position: absolute; left: 0; }
       .menu-icon::before { top: -7px; }
       .menu-icon::after { top: 7px; }
-      .logo {
-        grid-column: 2;
-        grid-row: 1;
-        justify-self: center;
-        width: 60px;
-        height: 62px;
-        flex: none;
-      }
+      .logo { grid-column: 2; grid-row: 1; justify-self: center; width: 60px; height: 62px; flex: none; }
       .logo img { width: 60px; height: 62px; }
-      nav#site-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: min(82vw, 320px);
-        height: 100vh;
-        height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 0;
-        padding: 16px 0;
-        background: #ffffff;
-        box-shadow: 12px 0 28px rgba(6, 32, 52, .18);
-        z-index: 1002;
-        transform: translateX(-105%);
-        visibility: hidden;
-        pointer-events: none;
-        transition: transform .24s ease, visibility .24s ease;
-        overflow-y: auto;
-      }
-      body.menu-open nav#site-nav {
-        transform: translateX(0);
-        visibility: visible;
-        pointer-events: auto;
-      }
-      nav#site-nav a, nav#site-nav a:nth-last-child(-n+2) {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        width: 100%;
-        min-height: 54px;
-        margin: 0;
-        padding: 12px 22px;
-        border: 0;
-        border-bottom: 1px solid #e5edf2;
-        border-radius: 0;
-        background: transparent;
-        color: #123b5d;
-        font-size: 1rem;
-        font-weight: 600;
-        line-height: 1.3;
-        white-space: normal;
-      }
+      nav#site-nav { position: fixed; top: 0; left: 0; z-index: 1002; width: min(82vw,320px); height: 100vh; height: 100dvh; display: flex; flex-direction: column; gap: 0; padding: 16px 0; background: #fff; box-shadow: 12px 0 28px rgba(6,32,52,.18); transform: translateX(-105%); visibility: hidden; pointer-events: none; transition: transform .24s ease,visibility .24s ease; overflow-y: auto; }
+      body.menu-open nav#site-nav { transform: translateX(0); visibility: visible; pointer-events: auto; }
+      nav#site-nav a { display: flex; align-items: center; width: 100%; min-height: 54px; padding: 12px 22px; border-bottom: 1px solid #e5edf2; color: #123b5d; font-size: 1rem; font-weight: 600; }
       nav#site-nav a:hover, nav#site-nav a:focus-visible { background: #eef6fa; }
-      nav#site-nav a.is-active {
-        color: #0b597b;
-        background: #e5f3f9;
-        border-left: 4px solid #58adc9;
-        padding-left: 18px;
-        box-shadow: none;
-      }
-      .menu-close {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        width: 100%;
-        min-height: 50px;
-        padding: 6px 22px 16px;
-        border: 0;
-        background: transparent;
-        color: #123b5d;
-        font: 700 1rem Arial, sans-serif;
-        cursor: pointer;
-      }
-      .menu-close span { font-size: 1.65rem; line-height: 1; }
-      .menu-backdrop:not([hidden]) {
-        display: block;
-        position: fixed;
-        inset: 0;
-        z-index: 1001;
-        background: rgba(8, 28, 42, .46);
-      }
+      nav#site-nav a.is-active { padding-left: 18px; border-left: 4px solid #58adc9; background: #e5f3f9; color: #0b597b; }
+      .menu-close { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 50px; padding: 6px 22px 16px; border: 0; background: transparent; color: #123b5d; font-weight: 700; cursor: pointer; }
+      .menu-close span { font-size: 1.65rem; }
+      .menu-backdrop:not([hidden]) { display: block; position: fixed; inset: 0; z-index: 1001; background: rgba(8,28,42,.46); }
       body.menu-open { overflow: hidden; }
+      [id] { scroll-margin-top: 82px; }
+      .project-hero { min-height: 62vh; }
+      .project-hero-inner { padding: 68px 20px; }
+      .project-hero h1 { font-size: clamp(2rem,9vw,3rem); overflow-wrap: break-word; }
+      .project-section, .section-band-inner { padding: 58px 20px; }
+      .field-copy { grid-template-columns: 1fr; }
+      table { min-width: 610px; font-size: .86rem; }
+      th, td { padding: 12px 10px; }
+      .gallery-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+      .gallery-feature { padding: 7px; }
+      .gallery-thumb img { height: 108px; }
+      .gallery-thumb span { font-size: .72rem; }
+      .gallery-lightbox { width: 100vw; height: 100dvh; max-height: 100dvh; border-radius: 0; padding: 12px; }
+      .lightbox-stage { grid-template-columns: 36px minmax(0,1fr) 36px; gap: 3px; }
+      .lightbox-prev, .lightbox-next { width: 36px; height: 48px; }
+      .lightbox-stage img { max-height: calc(100dvh - 155px); }
+      .underground-visuals img { height: 145px; }
+      .underground-visuals figure:first-child img { height: 205px; }
+      .integrated-result { padding: 30px 22px; }
+      .terrain-shell { height: min(72vh,560px); min-height: 470px; }
+      .terrain-poster { padding: 14px; }
+      .terrain-toolbar { left: 10px; right: 10px; justify-content: flex-end; }
+      .terrain-toolbar button { padding: 8px 10px; font-size: .8rem; }
+      .terrain-status { font-size: .75rem; }
+      .terrain-meta { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 390px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .terrain-toolbar button { padding: 7px 8px; }
+      .terrain-meta { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
-      nav#site-nav { transition: none; }
+      html { scroll-behavior: auto; }
+      nav#site-nav, .terrain-poster { transition: none; }
     }
-    @media (min-width: 701px) {
-    nav a.is-active { color: #12658b; background: transparent; box-shadow: none; border-radius: 0; font-weight: 700; }
-  }
-
-    @media (min-width: 901px) { html { font-size: 18px; } }
-    main p:not(.project-category) { text-align: justify; hyphens: auto; }
-
-    /* Lectura continua: párrafos centrados sin separación silábica */
-    main p {
-      text-align: center !important;
-      hyphens: none !important;
-      -webkit-hyphens: none !important;
-      word-break: normal;
-      overflow-wrap: normal;
-    }
-    main h2, main h3 { text-align: center !important; hyphens: none; }
-
-    /* Navegación móvil accesible durante todo el desplazamiento */
-    @media (max-width: 700px) {
-      header { position: sticky; top: 0; z-index: 1000; }
-      [id] { scroll-margin-top: 82px; }
-    }
-</style>
-  <script src="/site-nav.js" defer></script>
-
-  <link rel="manifest" href="/manifest.webmanifest">
+  </style>
 </head>
 
 <body>
-
   <header>
     <div class="header-inner">
-
-      <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menú">
-        <span class="menu-icon" aria-hidden="true"></span>
-      </button>
-      <a class="logo" href="../../">
-        <img src="../../images/logo-simbolo.webp" alt="Padilla Ingeniería">
-      </a>
-
+      <button class="menu-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Abrir menú"><span class="menu-icon" aria-hidden="true"></span></button>
+      <a class="logo" href="../../"><img src="../../images/logo-simbolo.webp" alt="Padilla Ingeniería"></a>
       <nav id="site-nav" aria-label="Navegación principal">
         <button class="menu-close" type="button" aria-label="Cerrar menú"><span aria-hidden="true">×</span> Cerrar</button>
         <a href="../../#servicios">Servicios</a>
@@ -610,156 +222,356 @@
         <a href="../../#vision">Enfoque</a>
         <a href="/contacto/">Contacto</a>
       </nav>
-
     </div>
     <div class="menu-backdrop" hidden></div>
   </header>
 
   <main>
-
-
-  <section class="project-hero">
-
-    <div class="project-hero-inner">
-
-      <div class="project-category">
-        FOTOGRAMETRÍA · MINERÍA · GEOFÍSICA
+    <section class="project-hero">
+      <div class="project-hero-inner">
+        <div class="project-label">FOTOGRAMETRÍA · TOPOGRAFÍA · MINERÍA</div>
+        <h1>Levantamiento aerofotogramétrico y mensura subterránea — Concesión Minera Mariscal</h1>
+        <div class="project-location">Tupiza · Potosí · Bolivia</div>
       </div>
+    </section>
 
-      <h1>
-        Levantamiento fotogramétrico de la concesión minera Mariscal
-      </h1>
-
-      <div class="project-location">
-        Potosí, Bolivia
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <section>
-
-    <h2 class="section-title">
-      Integración de información geoespacial y geofísica
-    </h2>
-
-    <p class="intro">
-      Se realizó el levantamiento fotogramétrico de la concesión minera
-      para obtener un modelo 3D del terreno y utilizarlo como base para
-      enlazar los resultados del estudio de geofísica, facilitando la
-      interpretación espacial de las anomalías mineralizadas.
-      El modelo 3D también permitió sobreponer las labores mineras
-      levantadas mediante mensura subterránea.
-    </p>
-
-    <div class="technical-grid">
-
-      <div class="technical-card">
-        <span>UBICACIÓN</span>
-        <strong>Potosí, Bolivia</strong>
-      </div>
-
-      <div class="technical-card">
-        <span>TECNOLOGÍA</span>
-        <strong>Drone · Topografía · Aerofotogrametría</strong>
-      </div>
-
-      <div class="technical-card">
-        <span>PRODUCTOS</span>
-        <strong>Ortofoto · MDE · Curvas de nivel · Cartografía georreferenciada</strong>
-      </div>
-
-      <div class="technical-card">
-        <span>APLICACIÓN</span>
-        <strong>Integración de información fotogramétrica, geofísica y minera</strong>
-      </div>
-
-    </div>
-
-    <div class="main-image">
-
-      <img
-        src="../../images/MARISCAL.png"
-        alt="Levantamiento fotogramétrico de la concesión minera Mariscal"
-      >
-
-      <p class="caption">
-        Vista general del levantamiento fotogramétrico de la concesión minera Mariscal.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <div class="workflow">
-
-    <div class="workflow-inner">
-
-      <h2 class="section-title">
-        Flujo de trabajo
-      </h2>
-
-      <div class="workflow-grid">
-
-        <div class="workflow-card">
-          <div class="workflow-number">01</div>
-          <h3>Levantamiento</h3>
-          <p>
-            Captura aérea del área de interés mediante drone.
-          </p>
+    <section class="project-section" aria-labelledby="introduccion-titulo">
+      <div class="case-lead">
+        <div>
+          <h2 id="introduccion-titulo">Introducción</h2>
+          <p>Se realizó el levantamiento aerofotogramétrico de aproximadamente 220 hectáreas de la concesión minera José Antonio Mariscal Uzqueda, ubicada en Tupiza, Potosí. El trabajo permitió generar información geoespacial actualizada de la superficie y complementarla con la mensura topográfica de las principales labores mineras subterráneas.</p>
         </div>
-
-        <div class="workflow-card">
-          <div class="workflow-number">02</div>
-          <h3>Procesamiento</h3>
-          <p>
-            Procesamiento fotogramétrico para generar información
-            espacial y modelo 3D del terreno.
-          </p>
-        </div>
-
-        <div class="workflow-card">
-          <div class="workflow-number">03</div>
-          <h3>Integración</h3>
-          <p>
-            Vinculación de la información fotogramétrica con los
-            resultados del estudio de geofísica.
-          </p>
-        </div>
-
-        <div class="workflow-card">
-          <div class="workflow-number">04</div>
-          <h3>Representación</h3>
-          <p>
-            Superposición de anomalías y labores mineras sobre
-            el modelo espacial para facilitar su interpretación.
-          </p>
-        </div>
-
+        <aside class="technical-data" aria-label="Datos principales del proyecto">
+          <h3>Datos del proyecto</h3>
+          <div class="technical-item"><strong>Área levantada</strong><span>Aproximadamente 220 ha</span></div>
+          <div class="technical-item"><strong>Captura aérea</strong><span>859 fotografías</span></div>
+          <div class="technical-item"><strong>Control terrestre</strong><span>8 puntos fotogramétricos</span></div>
+          <div class="technical-item"><strong>Referencia</strong><span>WGS 84 / UTM zona 20S</span></div>
+        </aside>
       </div>
+    </section>
 
-    </div>
+    <section class="section-band" aria-labelledby="levantamiento-titulo">
+      <div class="section-band-inner">
+        <h2 id="levantamiento-titulo">Control topográfico y levantamiento aerofotogramétrico</h2>
+        <div class="field-copy">
+          <article>
+            <h3>Control topográfico</h3>
+            <p>La georreferenciación se estableció a partir de dos puntos oficiales del Instituto Geográfico Militar de Tupiza. Desde esta referencia se conformó una red de ocho puntos de control fotogramétrico, utilizados para orientar y ajustar el bloque de imágenes y mantener una referencia común entre la información de superficie y los trabajos topográficos posteriores.</p>
+          </article>
+          <article>
+            <h3>Levantamiento aéreo</h3>
+            <p>El levantamiento aéreo comprendió cinco vuelos, con solapes longitudinal y transversal del 60 %. Se procesaron 859 fotografías, obteniéndose una cobertura de aproximadamente 220 ha, con un GSD de 5,5 cm/píxel.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  </div>
+    <section class="project-section" aria-labelledby="resultados-titulo">
+      <h2 id="resultados-titulo">Resultados técnicos</h2>
+      <div class="results-table-wrap" tabindex="0" role="region" aria-label="Tabla de resultados técnicos, desplazable horizontalmente en pantallas pequeñas">
+        <table>
+          <caption>Resumen del procesamiento fotogramétrico</caption>
+          <thead><tr><th scope="col">Parámetro</th><th scope="col">Resultado</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Área</th><td>220 ha</td></tr>
+            <tr><th scope="row">Fotografías</th><td>859</td></tr>
+            <tr><th scope="row">Puntos de control</th><td>8</td></tr>
+            <tr><th scope="row">Altura relativa de vuelo</th><td>90 m</td></tr>
+            <tr><th scope="row">GSD</th><td>5,5 cm/píxel</td></tr>
+            <tr><th scope="row">Error XY</th><td>9,76 cm</td></tr>
+            <tr><th scope="row">Error Z</th><td>1,17 cm</td></tr>
+            <tr><th scope="row">RMS de reproyección</th><td>1,34 píxeles</td></tr>
+            <tr><th scope="row">Resolución del DEM</th><td>22 cm/píxel</td></tr>
+            <tr><th scope="row">Nube de puntos</th><td>103,2 millones de puntos</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="results-note">El procesamiento permitió generar una ortofotografía georreferenciada, un Modelo Digital de Elevación, curvas de nivel, nube de puntos y cartografía topográfica actualizada. El DEM representa un rango altitudinal aproximado entre 3310 y 3620 m s. n. m.</p>
+    </section>
 
+    <section class="section-band" aria-labelledby="galeria-titulo">
+      <div class="section-band-inner">
+        <h2 id="galeria-titulo">Galería técnica</h2>
+        <p class="gallery-intro">Registros reales del procesamiento fotogramétrico, los productos de superficie y la documentación topográfica y minera.</p>
+        <figure class="gallery-feature">
+          <button type="button" class="gallery-feature-button" aria-label="Abrir modelo tridimensional general en el visor">
+            <img src="../../images/mariscal/modelo-3d-general.webp" alt="Vista general del modelo tridimensional fotogramétrico de la concesión Mariscal" width="1205" height="524" loading="lazy" decoding="async">
+          </button>
+          <figcaption>Vista general del modelo tridimensional fotogramétrico de la concesión Mariscal.</figcaption>
+        </figure>
+        <div class="gallery-grid" aria-label="Imágenes técnicas del proyecto">
+          <button class="gallery-thumb" type="button" data-index="0"><img src="../../images/mariscal/modelo-3d-general.webp" alt="" width="1205" height="524" loading="lazy" decoding="async"><span>Modelo 3D general de la concesión</span></button>
+          <button class="gallery-thumb" type="button" data-index="1"><img src="../../images/mariscal/modelo-3d-detalle.webp" alt="" width="1221" height="528" loading="lazy" decoding="async"><span>Detalle oblicuo del modelo fotogramétrico</span></button>
+          <button class="gallery-thumb" type="button" data-index="2"><img src="../../images/mariscal/dem-control-fotogrametrico.webp" alt="" width="1599" height="710" loading="lazy" decoding="async"><span>DEM y puntos de control en el entorno de procesamiento</span></button>
+          <button class="gallery-thumb" type="button" data-index="3"><img src="../../images/mariscal/ortofotografia-general.webp" alt="" width="513" height="902" loading="lazy" decoding="async"><span>Ortofotografía general del área levantada</span></button>
+          <button class="gallery-thumb" type="button" data-index="4"><img src="../../images/mariscal/modelo-elevaciones.webp" alt="" width="568" height="818" loading="lazy" decoding="async"><span>Representación del relieve por elevaciones</span></button>
+          <button class="gallery-thumb" type="button" data-index="5"><img src="../../images/mariscal/ortofoto-detalle-control.webp" alt="" width="534" height="411" loading="lazy" decoding="async"><span>Detalle de ortofotografía y referencias de campo</span></button>
+          <button class="gallery-thumb" type="button" data-index="6"><img src="../../images/mariscal/integracion-labores-subterraneas.webp" alt="" width="546" height="415" loading="lazy" decoding="async"><span>Integración tridimensional de labores subterráneas</span></button>
+          <button class="gallery-thumb" type="button" data-index="7"><img src="../../images/mariscal/estacion-total.webp" alt="" width="922" height="1500" loading="lazy" decoding="async"><span>Estación total empleada en la mensura</span></button>
+          <button class="gallery-thumb" type="button" data-index="8"><img src="../../images/mariscal/perfil-labor-subterranea.webp" alt="" width="562" height="308" loading="lazy" decoding="async"><span>Perfil topográfico de una labor subterránea</span></button>
+          <button class="gallery-thumb" type="button" data-index="9"><img src="../../images/mariscal/visualizacion-geofisica-3d.webp" alt="" width="351" height="228" loading="lazy" decoding="async"><span>Representación tridimensional de resultados geofísicos</span></button>
+          <button class="gallery-thumb" type="button" data-index="10"><img src="../../images/mariscal/integracion-terreno-perfil.webp" alt="" width="1585" height="724" loading="lazy" decoding="async"><span>Vista integrada del terreno y perfil técnico</span></button>
+        </div>
+      </div>
+    </section>
 
-  <section class="back">
+    <section class="project-section" aria-labelledby="mensura-titulo">
+      <div class="underground-grid">
+        <div>
+          <h2 id="mensura-titulo">Mensura subterránea</h2>
+          <p>Como complemento al levantamiento de superficie se realizó la mensura georreferenciada de las labores mineras subterráneas mediante estación total. Se registraron ejes de galerías, intersecciones, cambios de dirección y elementos relevantes de los niveles N26, N50, N65 y N82, además de la Mina Santiago.</p>
+          <p>La información obtenida fue procesada para generar una nube de puntos tridimensional georreferenciada y planos de mensura, permitiendo representar espacialmente la geometría de las labores y disponer de una base técnica para documentación, control de avances y planificación minera.</p>
+        </div>
+        <div class="underground-visuals" aria-label="Documentación de la mensura subterránea">
+          <figure><img src="../../images/mariscal/integracion-labores-subterraneas.webp" alt="Modelo tridimensional de niveles y labores mineras bajo la superficie" width="546" height="415" loading="lazy" decoding="async"><figcaption>Relación espacial de niveles y labores levantadas.</figcaption></figure>
+          <figure><img src="../../images/mariscal/estacion-total.webp" alt="Estación total utilizada en la mensura topográfica" width="922" height="1500" loading="lazy" decoding="async"><figcaption>Equipo de mensura.</figcaption></figure>
+          <figure><img src="../../images/mariscal/perfil-labor-subterranea.webp" alt="Perfil topográfico de una labor subterránea" width="562" height="308" loading="lazy" decoding="async"><figcaption>Perfil de una labor.</figcaption></figure>
+        </div>
+      </div>
+    </section>
 
-    <a href="../../#proyectos">
-      ← Volver al portafolio
-    </a>
+    <section class="project-section" aria-labelledby="integracion-titulo">
+      <div class="integrated-result">
+        <h2 id="integracion-titulo">Resultado integrado</h2>
+        <p>La utilización de un mismo sistema de referencia permitió relacionar la información fotogramétrica de superficie con la mensura de las labores subterráneas, generando una base geoespacial común para el análisis y documentación técnica de la concesión.</p>
+      </div>
+    </section>
 
-  </section>
+    <section class="terrain-section" aria-labelledby="modelo-terreno-titulo">
+      <div class="section-band-inner">
+        <h2 id="modelo-terreno-titulo">Modelo tridimensional del terreno</h2>
+        <p class="terrain-intro">Explore el relieve de la concesión Mariscal mediante el modelo digital generado a partir del levantamiento aerofotogramétrico. La visualización permite reconocer la configuración del terreno y comprender espacialmente el entorno en el que se desarrollan las labores mineras.</p>
+        <div class="terrain-shell" id="terrain-shell">
+          <img class="terrain-poster" src="../../images/mariscal/terreno-dem-preview.webp" alt="Vista previa del modelo digital de elevación de la concesión Mariscal" width="480" height="1077" loading="lazy" decoding="async">
+          <div class="terrain-canvas" id="terrain-canvas"></div>
+          <div class="terrain-toolbar" aria-label="Controles del modelo 3D">
+            <button type="button" id="terrain-reset" disabled>Restablecer vista</button>
+            <button type="button" id="terrain-fullscreen">Pantalla completa</button>
+          </div>
+          <div class="terrain-status" id="terrain-status" aria-live="polite"><button class="terrain-load" type="button" id="terrain-load">Cargar modelo 3D</button> · Arrastre para orbitar, use la rueda o dos dedos para acercar y alejar.</div>
+        </div>
+        <div class="terrain-meta" aria-label="Metadatos del modelo digital">
+          <div><strong>Sistema de referencia</strong><span>WGS 84 / UTM zona 20S</span></div>
+          <div><strong>Resolución de origen</strong><span>2 m por píxel</span></div>
+          <div><strong>Rango de elevación</strong><span>3315,94–3619,64 m</span></div>
+          <div><strong>Escala vertical</strong><span>1:1, sin exageración</span></div>
+        </div>
+        <p class="terrain-caption">Modelo digital de elevación generado a partir del levantamiento fotogramétrico de la concesión Mariscal.</p>
+      </div>
+    </section>
 
+    <section class="project-section" aria-labelledby="productos-titulo">
+      <h2 id="productos-titulo">Productos obtenidos</h2>
+      <ul class="products-list">
+        <li>Ortofotografía georreferenciada</li><li>Modelo Digital de Elevación</li><li>Curvas de nivel</li><li>Nube de puntos fotogramétrica</li><li>Cartografía topográfica</li><li>Planos de mensura subterránea</li><li>Nube de puntos de labores mineras</li>
+      </ul>
+    </section>
 
+    <div class="back-section"><a class="back-link" href="../../#proyectos">← Volver al portafolio</a></div>
+
+    <dialog class="gallery-lightbox" id="gallery-lightbox" aria-label="Visor de imágenes del proyecto">
+      <div class="lightbox-top"><span class="lightbox-counter" aria-live="polite"></span><button type="button" class="lightbox-close" aria-label="Cerrar visor">Cerrar ×</button></div>
+      <div class="lightbox-stage"><button type="button" class="lightbox-prev" aria-label="Imagen anterior">‹</button><img alt=""><button type="button" class="lightbox-next" aria-label="Imagen siguiente">›</button></div>
+      <p class="lightbox-caption" aria-live="polite"></p>
+    </dialog>
   </main>
 
-  <footer>
-    © Padilla Ingeniería · Ingeniería, tecnología y representación espacial
-  </footer>
+  <footer>© 2026 Padilla Ingeniería · Oruro, Bolivia</footer>
 
+  <script>
+    (() => {
+      const dialog = document.getElementById('gallery-lightbox');
+      const thumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
+      const feature = document.querySelector('.gallery-feature-button');
+      const image = dialog.querySelector('.lightbox-stage img');
+      const caption = dialog.querySelector('.lightbox-caption');
+      const counter = dialog.querySelector('.lightbox-counter');
+      const close = dialog.querySelector('.lightbox-close');
+      let current = 0;
+      let touchStartX = 0;
+      const descriptions = [
+        'Vista general del modelo tridimensional fotogramétrico de la concesión Mariscal.',
+        'Detalle oblicuo del modelo fotogramétrico y del relieve escarpado del área.',
+        'Modelo Digital de Elevación y distribución de puntos de control en el entorno de procesamiento.',
+        'Ortofotografía general del área cubierta por el levantamiento aerofotogramétrico.',
+        'Representación del relieve mediante una escala de elevaciones.',
+        'Detalle de ortofotografía con referencias registradas durante el trabajo de campo.',
+        'Integración tridimensional de las labores subterráneas levantadas y la superficie.',
+        'Estación total utilizada para la mensura georreferenciada de las labores mineras.',
+        'Perfil topográfico elaborado a partir de la mensura de una labor subterránea.',
+        'Representación tridimensional de resultados geofísicos sobre el relieve del área.',
+        'Vista integrada del modelo de terreno y un perfil técnico de interpretación.'
+      ];
+      function show(index) {
+        current = (index + thumbs.length) % thumbs.length;
+        const source = thumbs[current].querySelector('img');
+        image.src = source.src;
+        image.alt = descriptions[current];
+        caption.textContent = descriptions[current];
+        counter.textContent = `${current + 1} / ${thumbs.length}`;
+      }
+      function open(index) { show(index); dialog.showModal(); close.focus(); }
+      feature.addEventListener('click', () => open(0));
+      thumbs.forEach((thumb, index) => {
+        thumb.setAttribute('aria-label', `Abrir imagen ${index + 1}: ${thumb.querySelector('span').textContent}`);
+        thumb.addEventListener('click', () => open(index));
+      });
+      close.addEventListener('click', () => dialog.close());
+      dialog.querySelector('.lightbox-prev').addEventListener('click', () => show(current - 1));
+      dialog.querySelector('.lightbox-next').addEventListener('click', () => show(current + 1));
+      dialog.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft') { event.preventDefault(); show(current - 1); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); show(current + 1); }
+      });
+      dialog.addEventListener('touchstart', event => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+      dialog.addEventListener('touchend', event => {
+        const distance = event.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(distance) > 45) show(current + (distance < 0 ? 1 : -1));
+      }, { passive: true });
+    })();
+  </script>
+
+  <script type="module">
+    const shell = document.getElementById('terrain-shell');
+    const mount = document.getElementById('terrain-canvas');
+    const status = document.getElementById('terrain-status');
+    const loadButton = document.getElementById('terrain-load');
+    const resetButton = document.getElementById('terrain-reset');
+    const fullscreenButton = document.getElementById('terrain-fullscreen');
+    let loadPromise;
+
+    async function initializeTerrain() {
+      if (loadPromise) return loadPromise;
+      loadPromise = (async () => {
+        status.textContent = 'Cargando datos reales del terreno…';
+        const [{ default: THREE }, controlsModule] = await Promise.all([
+          import('./terrain-three-adapter.js'),
+          import('three/addons/controls/OrbitControls.js')
+        ]);
+        const { OrbitControls } = controlsModule;
+        const [metaResponse, dataResponse] = await Promise.all([
+          fetch('../../images/mariscal/terreno-meta.json'),
+          fetch('../../images/mariscal/terreno-elevacion-u16.bin')
+        ]);
+        if (!metaResponse.ok || !dataResponse.ok) throw new Error('No se pudieron descargar los datos del terreno.');
+        const meta = await metaResponse.json();
+        const encoded = new Uint16Array(await dataResponse.arrayBuffer());
+        if (encoded.length !== meta.width * meta.height) throw new Error('Los datos del terreno están incompletos.');
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x071c2a);
+        const camera = new THREE.PerspectiveCamera(42, 1, 1, 12000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        mount.appendChild(renderer.domElement);
+        renderer.domElement.tabIndex = 0;
+        renderer.domElement.setAttribute('aria-label', 'Modelo tridimensional interactivo del terreno de la concesión Mariscal');
+
+        const count = meta.width * meta.height;
+        const positions = new Float32Array(count * 3);
+        const colors = new Float32Array(count * 3);
+        const indices = [];
+        const dx = meta.extentWidthMeters / (meta.width - 1);
+        const dz = meta.extentHeightMeters / (meta.height - 1);
+        const range = meta.maxElevationMeters - meta.minElevationMeters;
+        const stops = [[.11,.31,.40],[.23,.49,.43],[.55,.58,.39],[.58,.42,.27],[.82,.82,.78]];
+        const valid = new Uint8Array(count);
+
+        for (let row = 0; row < meta.height; row++) {
+          for (let col = 0; col < meta.width; col++) {
+            const i = row * meta.width + col;
+            const p = i * 3;
+            positions[p] = -meta.extentWidthMeters / 2 + col * dx;
+            positions[p + 2] = -meta.extentHeightMeters / 2 + row * dz;
+            if (encoded[i] === meta.nodata) continue;
+            valid[i] = 1;
+            const normalized = encoded[i] / 65534;
+            positions[p + 1] = normalized * range;
+            const scaled = normalized * (stops.length - 1);
+            const lo = Math.floor(scaled);
+            const hi = Math.min(lo + 1, stops.length - 1);
+            const mix = scaled - lo;
+            colors[p] = stops[lo][0] * (1 - mix) + stops[hi][0] * mix;
+            colors[p + 1] = stops[lo][1] * (1 - mix) + stops[hi][1] * mix;
+            colors[p + 2] = stops[lo][2] * (1 - mix) + stops[hi][2] * mix;
+          }
+        }
+        for (let row = 0; row < meta.height - 1; row++) {
+          for (let col = 0; col < meta.width - 1; col++) {
+            const a = row * meta.width + col;
+            const b = a + 1;
+            const c = a + meta.width;
+            const d = c + 1;
+            if (valid[a] && valid[b] && valid[c]) indices.push(a, c, b);
+            if (valid[b] && valid[c] && valid[d]) indices.push(b, c, d);
+          }
+        }
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        geometry.setIndex(indices);
+        geometry.computeVertexNormals();
+        const material = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: .92, metalness: 0, side: THREE.DoubleSide });
+        const terrain = new THREE.Mesh(geometry, material);
+        scene.add(terrain);
+        scene.add(new THREE.HemisphereLight(0xd8eff8, 0x17303d, 1.75));
+        const sun = new THREE.DirectionalLight(0xffffff, 2.2);
+        sun.position.set(-1100, 1900, -900);
+        scene.add(sun);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enablePan = true;
+        controls.screenSpacePanning = true;
+        controls.minDistance = 260;
+        controls.maxDistance = 8200;
+        controls.maxPolarAngle = Math.PI * .495;
+        const initialPosition = new THREE.Vector3(1850, 1450, 2850);
+        const initialTarget = new THREE.Vector3(0, range * .28, 0);
+        function resetView() {
+          camera.position.copy(initialPosition);
+          controls.target.copy(initialTarget);
+          controls.update();
+          render();
+        }
+        function resize() {
+          const width = Math.max(1, mount.clientWidth);
+          const height = Math.max(1, mount.clientHeight);
+          renderer.setSize(width, height, false);
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          render();
+        }
+        function render() { renderer.render(scene, camera); }
+        controls.addEventListener('change', render);
+        new ResizeObserver(resize).observe(shell);
+        resetButton.addEventListener('click', resetView);
+        resetButton.disabled = false;
+        resetView();
+        resize();
+        shell.classList.add('is-ready');
+        status.textContent = 'Modelo listo · Arrastre para orbitar; rueda o dos dedos para zoom; botón derecho o dos dedos para desplazar.';
+      })().catch(error => {
+        console.error(error);
+        status.textContent = 'No fue posible iniciar el visor 3D. La vista previa corresponde al mismo DEM y permanece disponible.';
+        loadPromise = null;
+      });
+      return loadPromise;
+    }
+
+    loadButton.addEventListener('click', initializeTerrain);
+    fullscreenButton.addEventListener('click', async () => {
+      try {
+        if (!document.fullscreenElement) await shell.requestFullscreen();
+        else await document.exitFullscreen();
+      } catch (error) { console.error(error); }
+    });
+    document.addEventListener('fullscreenchange', () => { fullscreenButton.textContent = document.fullscreenElement ? 'Salir de pantalla completa' : 'Pantalla completa'; });
+    const observer = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) { initializeTerrain(); observer.disconnect(); }
+    }, { rootMargin: '350px 0px' });
+    observer.observe(shell);
+  </script>
 </body>
 </html>
