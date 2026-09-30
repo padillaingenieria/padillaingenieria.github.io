@@ -92,7 +92,7 @@
           rgba(10, 30, 45, 0.78),
           rgba(10, 30, 45, 0.78)
         ),
-        url("../../images/IMPLANTACION.png");
+        url("assets/implantacion-bim-terreno.webp");
 
       background-size: cover;
       background-position: center;
@@ -226,8 +226,134 @@
     .main-image img {
       width: 100%;
       height: auto;
+      max-height: 720px;
+      object-fit: contain;
       display: block;
       border-radius: 6px;
+    }
+
+    .gallery-open {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+    }
+
+    .main-image figcaption {
+      padding: 12px 8px 3px;
+      color: #5d7181;
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .gallery-thumb {
+      min-width: 0;
+      padding: 8px;
+      border: 1px solid #dce6ed;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #405c70;
+      cursor: zoom-in;
+      text-align: center;
+    }
+
+    .gallery-thumb:hover,
+    .gallery-thumb:focus-visible {
+      border-color: #3082a3;
+    }
+
+    .gallery-thumb img {
+      display: block;
+      width: 100%;
+      height: 125px;
+      object-fit: contain;
+      border-radius: 4px;
+      background: #f4f7f9;
+    }
+
+    .gallery-thumb span {
+      display: block;
+      min-height: 3.1em;
+      padding: 9px 2px 2px;
+      font-size: 0.72rem;
+      line-height: 1.4;
+    }
+
+    .gallery-lightbox {
+      width: min(1120px, 96vw);
+      max-width: none;
+      max-height: 95vh;
+      padding: 16px;
+      border: 0;
+      border-radius: 10px;
+      background: #ffffff;
+      color: #17202a;
+    }
+
+    .gallery-lightbox::backdrop { background: rgba(5, 23, 37, 0.91); }
+    .gallery-lightbox.is-open {
+      display: block;
+      position: fixed;
+      inset: 2.5vh 2vw;
+      z-index: 2000;
+      margin: auto;
+      box-shadow: 0 0 0 100vmax rgba(5, 23, 37, 0.91);
+    }
+    body.lightbox-open { overflow: hidden; }
+    .lightbox-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .lightbox-counter { color: #49687d; font-size: 0.9rem; }
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      border: 1px solid #b5cbd8;
+      border-radius: 6px;
+      background: #ffffff;
+      color: #123b5d;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .lightbox-close { padding: 9px 14px; }
+    .lightbox-stage {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) 48px;
+      align-items: center;
+      gap: 10px;
+    }
+    .lightbox-stage img {
+      display: block;
+      max-width: 100%;
+      max-height: calc(95vh - 135px);
+      width: auto;
+      height: auto;
+      margin: auto;
+      object-fit: contain;
+    }
+    .lightbox-prev,
+    .lightbox-next {
+      width: 48px;
+      height: 58px;
+      font-size: 2rem;
+    }
+    .lightbox-caption {
+      padding: 10px 4px 0;
+      color: #3d5a6d;
+      font-size: 0.93rem;
+      text-align: center !important;
     }
 
     /* FLUJO */
@@ -331,6 +457,30 @@
         grid-template-columns: 1fr;
       }
 
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .gallery-thumb img { height: 112px; }
+      .gallery-lightbox {
+        width: 100vw;
+        height: 100dvh;
+        max-height: 100dvh;
+        padding: 12px;
+        border-radius: 0;
+      }
+      .lightbox-stage {
+        grid-template-columns: 36px minmax(0, 1fr) 36px;
+        gap: 3px;
+      }
+      .lightbox-prev,
+      .lightbox-next {
+        width: 36px;
+        height: 48px;
+      }
+      .lightbox-stage img { max-height: calc(100dvh - 155px); }
+
       .back-section {
         padding: 50px 20px 70px;
       }
@@ -338,7 +488,8 @@
     }
 
   
-    a:focus-visible { outline: 3px solid #49a8c6; outline-offset: 3px; }
+    button { font: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #49a8c6; outline-offset: 3px; }
     .section-title { text-align: center; }
     .product-inner > h2, .project-section > h2 { text-align: center; }
     @media (max-width: 900px) {
@@ -359,6 +510,7 @@
         min-height: 40px;
         align-items: center;
       }
+      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     @media (max-width: 520px) {
       .nav, .header-inner { padding: 8px 16px; }
@@ -369,6 +521,7 @@
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
+      nav#site-nav { transition: none; }
     }
   
     /* Identidad común a la portada y las fichas */
@@ -779,13 +932,44 @@
           las condiciones existentes.
         </p>
 
-        <div class="main-image">
+        <figure class="main-image">
 
-          <img
-            src="../../images/IMPLANTACION.png"
-            alt="Implantación de modelo BIM sobre terreno levantado mediante fotogrametría"
-          >
+          <button class="gallery-open" type="button" data-index="0" aria-label="Abrir implantación del modelo BIM en el visor">
+            <img
+              src="assets/implantacion-bim-terreno.webp"
+              alt="Modelo BIM del edificio implantado sobre la información tridimensional del terreno"
+              width="1347"
+              height="594"
+              loading="lazy"
+              decoding="async"
+            >
+          </button>
 
+          <figcaption>Implantación del modelo BIM sobre la información del terreno.</figcaption>
+
+        </figure>
+
+        <div class="gallery-grid" aria-label="Galería técnica del proyecto">
+          <button class="gallery-thumb" type="button" data-index="0">
+            <img src="assets/implantacion-bim-terreno.webp" alt="Modelo BIM del edificio implantado sobre la información tridimensional del terreno" width="1347" height="594" loading="lazy" decoding="async">
+            <span>Implantación BIM sobre el terreno</span>
+          </button>
+          <button class="gallery-thumb" type="button" data-index="1">
+            <img src="assets/plano-emplazamiento.png" alt="Ortofotografía con la delimitación del área destinada al proyecto" width="493" height="699" loading="lazy" decoding="async">
+            <span>Área del proyecto sobre la ortofotografía</span>
+          </button>
+          <button class="gallery-thumb" type="button" data-index="2">
+            <img src="assets/modelo-altimetrico-terreno.png" alt="Representación altimétrica del terreno con escala de elevaciones" width="617" height="670" loading="lazy" decoding="async">
+            <span>Representación altimétrica del terreno</span>
+          </button>
+          <button class="gallery-thumb" type="button" data-index="3">
+            <img src="assets/preparacion-terreno-excavacion.webp" alt="Modelo del terreno con el área preparada para el análisis de excavación" width="514" height="403" loading="lazy" decoding="async">
+            <span>Preparación del terreno para excavación</span>
+          </button>
+          <button class="gallery-thumb" type="button" data-index="4">
+            <img src="assets/superficie-fotogrametrica.webp" alt="Vista tridimensional de la superficie fotogramétrica del terreno existente" width="1227" height="531" loading="lazy" decoding="async">
+            <span>Superficie fotogramétrica del terreno</span>
+          </button>
         </div>
 
       </div>
@@ -893,6 +1077,19 @@
 
     </div>
 
+    <dialog class="gallery-lightbox" id="gallery-lightbox" aria-label="Visor de imágenes del proyecto">
+      <div class="lightbox-top">
+        <span class="lightbox-counter" aria-live="polite"></span>
+        <button type="button" class="lightbox-close" aria-label="Cerrar visor">Cerrar ×</button>
+      </div>
+      <div class="lightbox-stage">
+        <button type="button" class="lightbox-prev" aria-label="Imagen anterior">‹</button>
+        <img alt="">
+        <button type="button" class="lightbox-next" aria-label="Imagen siguiente">›</button>
+      </div>
+      <p class="lightbox-caption" aria-live="polite"></p>
+    </dialog>
+
   </main>
 
 
@@ -901,6 +1098,88 @@
     © 2026 Padilla Ingeniería · Oruro, Bolivia
 
   </footer>
+
+  <script>
+    (() => {
+      const dialog = document.getElementById('gallery-lightbox');
+      const feature = document.querySelector('.gallery-open');
+      const thumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
+      const image = dialog.querySelector('.lightbox-stage img');
+      const caption = dialog.querySelector('.lightbox-caption');
+      const counter = dialog.querySelector('.lightbox-counter');
+      const closeButton = dialog.querySelector('.lightbox-close');
+      const descriptions = [
+        'Implantación del modelo BIM sobre la información del terreno.',
+        'Delimitación del área del proyecto sobre la ortofotografía.',
+        'Representación altimétrica del terreno procesado.',
+        'Preparación del terreno para el análisis de excavación.',
+        'Superficie fotogramétrica del terreno existente.'
+      ];
+      let current = 0;
+      let touchStartX = 0;
+
+      function show(index) {
+        current = (index + thumbs.length) % thumbs.length;
+        const source = thumbs[current].querySelector('img');
+        image.src = source.src;
+        image.alt = descriptions[current];
+        caption.textContent = descriptions[current];
+        counter.textContent = `${current + 1} / ${thumbs.length}`;
+      }
+
+      function openViewer(index) {
+        show(index);
+        if (typeof dialog.showModal === 'function') dialog.showModal();
+        else {
+          dialog.setAttribute('open', '');
+          dialog.classList.add('is-open');
+        }
+        document.body.classList.add('lightbox-open');
+        closeButton.focus();
+      }
+
+      function closeViewer() {
+        if (dialog.classList.contains('is-open')) {
+          dialog.removeAttribute('open');
+          dialog.classList.remove('is-open');
+        } else if (dialog.open && typeof dialog.close === 'function') {
+          dialog.close();
+        }
+        document.body.classList.remove('lightbox-open');
+      }
+
+      feature.addEventListener('click', () => openViewer(0));
+      thumbs.forEach((thumb, index) => {
+        thumb.setAttribute('aria-label', `Abrir imagen ${index + 1}: ${thumb.querySelector('span').textContent}`);
+        thumb.addEventListener('click', () => openViewer(index));
+      });
+      closeButton.addEventListener('click', closeViewer);
+      dialog.querySelector('.lightbox-prev').addEventListener('click', () => show(current - 1));
+      dialog.querySelector('.lightbox-next').addEventListener('click', () => show(current + 1));
+      dialog.addEventListener('close', () => document.body.classList.remove('lightbox-open'));
+      dialog.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          closeViewer();
+        }
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          show(current - 1);
+        }
+        if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          show(current + 1);
+        }
+      });
+      dialog.addEventListener('touchstart', event => {
+        touchStartX = event.changedTouches[0].screenX;
+      }, { passive: true });
+      dialog.addEventListener('touchend', event => {
+        const distance = event.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(distance) > 45) show(current + (distance < 0 ? 1 : -1));
+      }, { passive: true });
+    })();
+  </script>
 
 </body>
 
